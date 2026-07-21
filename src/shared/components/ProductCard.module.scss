@@ -1,0 +1,209 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    background: rgba(248, 250, 252, .04);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    transition: all .35s ease;
+
+    &:hover {
+
+        transform: translateY(-8px);
+
+        border-color: rgba(3,171,129,.3);
+
+        box-shadow:
+            0 20px 45px rgba(0,0,0,.28),
+            0 0 35px rgba(3,171,129,.12);
+
+    }
+}
+
+.discount {
+
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 10;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #03AB81,
+        #18D7A7
+    );
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(3,171,129,.35);
+
+}
+
+.imageContainer {
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 36px;
+
+    overflow: hidden;
+
+}
+
+.imageContainer::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background: rgba(3,171,129,.18);
+
+    filter: blur(45px);
+
+    transition: .35s;
+
+}
+
+.productImage {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+    height: auto;
+    border-radius: 20px;
+
+    transition: .35s ease;
+
+}
+
+.card:hover .productImage {
+
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+
+}
+
+.card:hover .imageContainer::before {
+
+    transform: scale(1.4);
+
+    background: rgba(3,171,129,.28);
+
+}
+
+.content {
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 190px;
+
+    padding: 24px;
+
+}
+
+.content h3 {
+
+    color: var(--color-surface);
+
+    font-size: 18px;
+    font-weight: 600;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+
+    transition: .3s;
+
+}
+
+.card:hover h3 {
+
+    color: var(--color-accent);
+
+}
+
+.priceBox {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 24px;
+
+}
+
+.previousPrice {
+
+    color: var(--color-text-secondary);
+
+    font-size: 14px;
+
+    text-decoration: line-through;
+
+    opacity: .65;
+
+}
+
+.price {
+
+    color: var(--color-accent);
+
+    font-size: 24px;
+    font-weight: 700;
+
+}
+
+.button {
+
+    width: 100%;
+    margin-top: auto;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: .35s ease;
+
+}
+
+.card:hover .button {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}

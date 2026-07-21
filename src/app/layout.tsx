@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import Header from "@/shared/layout/Header/Header";
 import Footer from "@/shared/layout/Footer/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "DigiBox | فروشگاه اینترنتی دیجی باکس",
@@ -24,8 +13,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html dir="rtl" lang="fa-IR" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html dir="rtl" lang="fa-IR">
       <body>
         <Header />
         <main>

@@ -1,0 +1,152 @@
+.header {
+    width: 100%;
+    background: var( --color-headerfooter);
+}
+
+.topHeader {
+    height: 80px;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   background: #08111A;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 250px;
+        height: auto;
+    }
+}
+
+.searchBox {
+    width: 500px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 0 20px;
+
+    background: rgba(248, 250, 252, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition: all 0.3s ease;
+
+    .searchIcon {
+        flex-shrink: 0;
+        font-size: 20px;
+        color: var(--color-text-secondary);
+        transition: color 0.3s ease;
+    }
+
+    input {
+        flex: 1;
+        height: 100%;
+
+        background: transparent;
+        border: none;
+        outline: none;
+
+        color: var(--color-surface);
+        font-size: 15px;
+        font-family: inherit;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+    }
+
+    &:focus-within {
+        border-color: rgba(3, 171, 129, 0.45);
+
+        box-shadow:
+            0 0 0 4px rgba(3, 171, 129, 0.12),
+            0 10px 25px rgba(0, 0, 0, 0.18);
+
+        .searchIcon {
+            color: var(--color-accent);
+        }
+    }
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-left: 30px;
+
+    a {
+        color: var(--color-surface);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+}
+
+.loginButton {
+    font-size: 30px;
+
+    span {
+        font-size: 15px;
+    }
+}
+
+.cartButton {
+    font-size: 30px;
+}
+
+.navigation {
+    height: 50px;
+    display: flex;
+    justify-content: center; // اضافه شود
+    align-items: center;
+    padding: 0 40px;
+    background-color: #08111A;
+
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--color-surface);
+        font-size: 15px;
+        transition: var(--transition);
+
+        &:hover {
+            color: var(--color-accent);
+            text-decoration: underline 2px ;
+            text-underline-offset: 10px;
+        }
+    }
+}

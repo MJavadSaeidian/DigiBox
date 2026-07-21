@@ -1,0 +1,201 @@
+.newsletter {
+
+    width: 100%;
+
+    padding: 90px 40px 80px;
+    background: var(--color-primary);
+
+}
+
+.container {
+
+    position: relative;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 60px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background: rgba(248,250,252,.04);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+}
+
+.container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    top:-120px;
+    left:-120px;
+
+    border-radius:50%;
+
+    background:rgba(3,171,129,.18);
+
+    filter:blur(120px);
+
+}
+
+.container::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    bottom:-120px;
+    right:-120px;
+
+    border-radius:50%;
+
+    background:rgba(3,171,129,.14);
+
+    filter:blur(120px);
+
+}
+
+.container>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.container h2{
+
+    color:var(--color-surface);
+
+    font-size:40px;
+
+    margin-bottom:18px;
+
+}
+
+.container p{
+
+    color:var(--color-text-secondary);
+
+    font-size:18px;
+
+    line-height:2;
+
+    max-width:650px;
+
+    margin:0 auto 40px;
+
+}
+
+.form{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.form input{
+
+    flex:1;
+
+    max-width:520px;
+
+    height:56px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    padding:0 22px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--color-surface);
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.form input::placeholder{
+
+    color:rgba(255,255,255,.45);
+
+}
+
+.form input:focus{
+
+    border-color:var(--color-accent);
+
+    box-shadow:0 0 0 4px rgba(3,171,129,.15);
+
+}
+
+@media(max-width:768px){
+
+    .container{
+
+        padding:40px 24px;
+
+    }
+
+    .container h2{
+
+        font-size:30px;
+
+    }
+
+    .container p{
+
+        font-size:16px;
+
+    }
+
+    .form{
+
+        flex-direction:column;
+
+    }
+
+    .form input{
+
+        width:100%;
+        max-width:none;
+
+    }
+
+    .form button{
+
+        width:100%;
+
+    }
+
+}

@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --color-primary: #0A192F; // Midnight Blue
+  --color-accent: #03AB81; // Electric Teal
+
+  /* Background */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+    /* Text */
+    --color-text: #0F172A;
+  --color-text-secondary: #64748B;
+
+  /* Status */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Border */
+  --color-border: #E2E8F0;
+
+  /* Layout */
+  --container-width: 1280px;
+  --border-radius: 12px;
+
+  /* Animation */
+  --transition: all 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font: inherit;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  direction: rtl;
+  font-family: "Vazirmatn", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
