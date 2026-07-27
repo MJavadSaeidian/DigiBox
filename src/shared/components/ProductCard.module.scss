@@ -1,3 +1,13 @@
+.link {
+
+    display: block;
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
 .card {
     position: relative;
     display: flex;
@@ -7,7 +17,7 @@
 
     background: rgba(248, 250, 252, .04);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -22,11 +32,11 @@
 
         transform: translateY(-8px);
 
-        border-color: rgba(3,171,129,.3);
+        border-color: rgba(3, 171, 129, .3);
 
         box-shadow:
-            0 20px 45px rgba(0,0,0,.28),
-            0 0 35px rgba(3,171,129,.12);
+            0 20px 45px rgba(0, 0, 0, .28),
+            0 0 35px rgba(3, 171, 129, .12);
 
     }
 }
@@ -44,11 +54,9 @@
 
     border-radius: 999px;
 
-    background: linear-gradient(
-        135deg,
-        #03AB81,
-        #18D7A7
-    );
+    background: linear-gradient(135deg,
+            #03AB81,
+            #18D7A7);
 
     color: white;
 
@@ -56,7 +64,7 @@
     font-weight: 700;
 
     box-shadow:
-        0 8px 20px rgba(3,171,129,.35);
+        0 8px 20px rgba(3, 171, 129, .35);
 
 }
 
@@ -85,7 +93,7 @@
 
     border-radius: 50%;
 
-    background: rgba(3,171,129,.18);
+    background: rgba(3, 171, 129, .18);
 
     filter: blur(45px);
 
@@ -110,8 +118,7 @@
 .card:hover .productImage {
 
     transform:
-        scale(1.08)
-        rotate(-3deg);
+        scale(1.08) rotate(-3deg);
 
 }
 
@@ -119,7 +126,7 @@
 
     transform: scale(1.4);
 
-    background: rgba(3,171,129,.28);
+    background: rgba(3, 171, 129, .28);
 
 }
 

@@ -1,0 +1,23 @@
+.grid {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 310px));
+    gap: 24px;
+    align-items: stretch;
+
+}
+
+.empty {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 0;
+}
+
+.empty img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+}

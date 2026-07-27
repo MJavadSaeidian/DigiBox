@@ -1,0 +1,90 @@
+.checkbox {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    input {
+
+        display: none;
+
+    }
+
+}
+
+.checkmark {
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 6px;
+
+    border: 2px solid rgba(255,255,255,.18);
+
+    background: rgba(255,255,255,.03);
+
+    transition: .25s;
+
+    position: relative;
+
+}
+
+.label {
+
+    color: var(--color-surface);
+
+    font-size: 14px;
+
+    transition: .25s;
+
+}
+
+/* حالت انتخاب */
+
+input:checked + .checkmark {
+
+    background: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+}
+
+/* علامت تیک */
+
+input:checked + .checkmark::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 1px;
+
+    width: 5px;
+    height: 10px;
+
+    border: solid white;
+
+    border-width: 0 2px 2px 0;
+
+    transform: rotate(45deg);
+
+}
+
+/* Hover */
+
+.checkbox:hover .checkmark {
+
+    border-color: var(--color-accent);
+
+}
+
+.checkbox:hover .label {
+
+    color: var(--color-accent);
+
+}

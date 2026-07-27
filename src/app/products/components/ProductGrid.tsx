@@ -1,23 +1,35 @@
-import SectionTitle from "@/shared/components/SectionTitle";
-import styles from "./FeaturedProducts.module.scss";
 import ProductCard from "@/shared/components/ProductCard";
-import { PRODUCTS } from "@/shared/constants/products";
+import { Product } from "@/shared/types/product";
 
+import styles from "./ProductGrid.module.scss";
+import Image from "next/image";
 
+type ProductGridProps = {
+    products: Product[];
+};
 
-function FeaturedProducts() {
-    return (
-        <section className={styles.featured}>
+function ProductGrid({
+    products,
+}: ProductGridProps) {
 
-            <SectionTitle
-                title="محصولات ویژه"
-                subtitle="منتخب‌ترین محصولات DigiBox با بهترین قیمت"
+    if (products.length === 0) {
+        return <div className={styles.empty}>
+            <Image
+                src="/images/no-products.png"
+                alt="no-products"
+                width={896}
+                height={597}
+                priority
             />
+        </div>
+    }
+    return (
 
-            <div className={styles.grid}>
+        <section className={styles.grid}>
 
-                {PRODUCTS.map((product) => (
-                    <ProductCard
+            {products.map((product) => (
+
+                <ProductCard
                     id={product.id}
                     key={product.id}
                     images={product.images}
@@ -34,12 +46,13 @@ function FeaturedProducts() {
                     brand={product.brand}
                     specifications={product.specifications}
                 />
-                ))}
 
-            </div>
+            ))}
 
         </section>
+
     );
+
 }
 
-export default FeaturedProducts;
+export default ProductGrid;

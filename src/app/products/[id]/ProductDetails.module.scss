@@ -1,0 +1,516 @@
+.product {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 60px 0;
+
+    background: var(--color-primary);
+
+    overflow: hidden;
+
+}
+
+.product::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -180px;
+    right: -180px;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(3, 171, 129, .22),
+            transparent 70%);
+
+    filter: blur(30px);
+
+}
+
+.product::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -220px;
+    left: -180px;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, .08),
+            transparent 75%);
+
+    filter: blur(50px);
+
+}
+
+.container {
+
+    position: relative;
+    z-index: 2;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 0 40px;
+
+    display: grid;
+
+    grid-template-columns: 520px 1fr;
+
+    gap: 50px;
+
+    align-items: start;
+
+}
+
+/* ===========================
+        GALLERY
+=========================== */
+
+.gallery {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.preview {
+
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .25),
+        inset 0 1px 0 rgba(255, 255, 255, .15);
+
+    overflow: hidden;
+
+}
+
+.preview::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, .08),
+            transparent 40%);
+
+    pointer-events: none;
+
+}
+
+.preview img {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    height: auto;
+
+    object-fit: contain;
+
+}
+
+.thumbnails {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+}
+
+.thumbnail {
+
+    width: 90px;
+
+    height: 90px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(18px);
+
+    transition: .25s;
+
+}
+
+.thumbnail img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+.thumbnail:hover {
+
+    transform: translateY(-4px);
+
+    border-color: var(--color-accent);
+
+    box-shadow: 0 10px 25px rgba(3, 171, 129, .25);
+
+}
+
+.active {
+
+    border-color: var(--color-accent);
+
+    box-shadow:
+        0 0 0 3px rgba(3, 171, 129, .18),
+        0 12px 25px rgba(3, 171, 129, .3);
+
+}
+
+/* ===========================
+        INFO
+=========================== */
+
+.info {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    padding: 36px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .25),
+        inset 0 1px 0 rgba(255, 255, 255, .15);
+
+    overflow: hidden;
+
+}
+
+.info::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, .08),
+            transparent 40%);
+
+    pointer-events: none;
+
+}
+
+.brand {
+
+    color: var(--color-accent);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+.info h1 {
+
+    font-size: 34px;
+
+    line-height: 1.8;
+
+    color: var(--color-background);
+
+}
+
+.rating {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #FBBF24;
+
+    font-weight: 700;
+
+}
+
+.rating span {
+
+    color: #CBD5E1;
+
+    font-size: 14px;
+
+}
+
+.stock {
+
+    width: fit-content;
+
+    padding: 8px 16px;
+
+    border-radius: 999px;
+
+    background: rgba(3, 171, 129, .15);
+
+    color: var(--color-accent);
+
+    border: 1px solid rgba(3, 171, 129, .35);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+.priceBox {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 22px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.previousPrice {
+
+    color: #94A3B8;
+
+    text-decoration: line-through;
+
+}
+
+.price {
+
+    color: var(--color-accent);
+
+    font-size: 40px;
+
+    font-weight: 800;
+
+}
+
+.addToCart {
+
+    height: 58px;
+
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,
+            #03AB81,
+            #029E78);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    box-shadow: 0 12px 30px rgba(3, 171, 129, .35);
+
+}
+
+.addToCart:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 18px 40px rgba(3, 171, 129, .45);
+
+}
+
+.description {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding-top: 8px;
+
+}
+
+.description h3 {
+
+    color: var(--color-background);
+
+}
+
+.description p {
+
+    color: #CBD5E1;
+
+    line-height: 2.2;
+
+    text-align: justify;
+
+}
+
+.bottomSection {
+
+    max-width: 1400px;
+
+    margin: 50px auto 0;
+
+    padding: 0 40px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 420px;
+
+    gap: 30px;
+
+    align-items: start;
+
+}
+
+@media(max-width:1000px) {
+
+    .bottomSection {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .bottomSection {
+
+        padding: 0 20px;
+
+    }
+
+}
+
+/* ===========================
+        Responsive
+=========================== */
+
+@media (max-width:1000px) {
+
+    .container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media (max-width:700px) {
+
+    .container {
+
+        padding: 0 20px;
+
+    }
+
+    .preview {
+
+        min-height: 320px;
+
+    }
+
+    .thumbnail {
+
+        width: 72px;
+
+        height: 72px;
+
+    }
+
+    .info h1 {
+
+        font-size: 28px;
+
+    }
+
+    .price {
+
+        font-size: 32px;
+
+    }
+
+}

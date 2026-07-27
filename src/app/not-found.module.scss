@@ -1,0 +1,51 @@
+.container {
+
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 40px;
+
+    padding: 40px;
+
+    background: var(--color-primary);
+
+}
+
+.container img {
+
+    max-width: 100%;
+    border-radius: 20px;
+    height: auto;
+
+}
+
+.button {
+
+    padding: 14px 32px;
+
+    border-radius: 12px;
+
+    background: var(--color-accent);
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+}
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 30px rgba(3,171,129,.35);
+
+}
