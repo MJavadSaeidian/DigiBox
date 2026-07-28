@@ -1,15 +1,15 @@
 .header {
     width: 100%;
-    background: var( --color-headerfooter);
+    background: var(--color-headerfooter);
 }
 
 .topHeader {
     height: 80px;
-    padding: 0px 40px;
+    padding: 50px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-   background: #08111A;
+    background: #08111A;
 }
 
 .rightSection {
@@ -105,15 +105,153 @@
 }
 
 .loginButton {
-    font-size: 30px;
 
-    span {
-        font-size: 15px;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+
+    padding: 10px 18px;
+
+
+    border-radius: 14px;
+
+
+    text-decoration: none;
+
+
+    color: #F8FAFC;
+
+
+    background:
+
+        rgba(255, 255, 255, 0.08);
+
+
+    border:
+
+        1px solid rgba(255, 255, 255, 0.15);
+
+
+    backdrop-filter: blur(15px);
+
+
+    transition: .3s;
+
+
+    cursor: pointer;
+
+
+    font-family: inherit;
+
+
+    font-size: 14px;
+
+
+
+    svg {
+
+        font-size: 20px;
+
+        color: #03AB81;
+
     }
+
+
+
+    &:hover {
+
+        background:
+
+            rgba(3, 171, 129, .15);
+
+
+        border-color: #03AB81;
+
+
+        transform: translateY(-2px);
+
+    }
+
 }
 
 .cartButton {
-    font-size: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+    width: 45px;
+
+    height: 45px;
+
+
+    border-radius: 14px;
+
+
+    background:
+        rgba(255, 255, 255, .08);
+
+
+    border:
+        1px solid rgba(255, 255, 255, .15);
+
+
+    backdrop-filter:
+        blur(20px);
+
+
+    color: #F8FAFC;
+
+
+    font-size: 22px;
+
+
+    transition: .3s;
+
+
+    cursor: pointer;
+
+
+
+    svg {
+
+        color: #F8FAFC;
+
+        transition: .3s;
+
+    }
+
+
+
+    &:hover {
+
+        background: #03AB81;
+
+
+        transform: translateY(-2px);
+
+
+        box-shadow:
+            0 10px 25px rgba(3, 171, 129, .35);
+
+
+
+        svg {
+
+            color: #ffffff;
+
+        }
+
+    }
+
 }
 
 .navigation {
@@ -145,8 +283,76 @@
 
         &:hover {
             color: var(--color-accent);
-            text-decoration: underline 2px ;
+            text-decoration: underline 2px;
             text-underline-offset: 10px;
         }
     }
+}
+
+.userInfo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 6px 12px;
+
+    height: 52px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(15px);
+
+}
+
+
+
+.avatarWrapper {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(255,255,255,.08);
+
+}
+
+
+
+.userAvatar {
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.avatarWrapper svg {
+
+    width: 32px;
+
+    height: 32px;
+
+    color: #94A3B8;
+
 }

@@ -1,0 +1,153 @@
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+}
+
+.title {
+
+    color: #F8FAFC;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+
+}
+
+.count {
+
+    color: #94A3B8;
+    font-size: 14px;
+
+}
+
+.addButton {
+
+    background: #03AB81;
+    color: #fff;
+
+    padding: 12px 22px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    transition: .25s;
+
+    &:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 12px 25px rgba(3, 171, 129, .35);
+
+    }
+
+}
+
+.tableWrapper {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background: rgba(3, 171, 129, 0.12);
+
+        th {
+            padding: 18px;
+            text-align: center;
+            color: #F8FAFC;
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
+
+    tbody {
+
+        tr {
+            transition: .25s;
+
+            &:hover {
+                background: rgba(255, 255, 255, .04);
+            }
+        }
+
+        td {
+            padding: 18px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            color: #F8FAFC;
+        }
+
+        img {
+            border-radius: 12px;
+            object-fit: cover;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.edit,
+.delete {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    transition: .25s;
+
+    color: white;
+}
+
+.edit {
+
+    background: #03AB81;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(3, 171, 129, .35);
+    }
+
+}
+
+.delete {
+
+    border: none;
+    cursor: pointer;
+
+    background: #ef4444;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(239, 68, 68, .35);
+    }
+
+}
+
+.success {
+    color: #22c55e;
+    font-size: 20px;
+}
+
+.danger {
+    color: #ef4444;
+    font-size: 20px;
+}

@@ -1,36 +1,76 @@
 import ProductCarousel from "@/shared/components/ProductCarousel";
-import { PRODUCTS } from "@/shared/constants/products";
 
 import styles from "./RelatedProducts.module.scss";
 
+import { connectDB } from "@/lib/db";
+import Product from "@/models/Product";
+
+
+
 type RelatedProductsProps = {
-    currentProductId: number;
+
+    currentProductSlug: string;
+
     category: string;
+
 };
 
-function RelatedProducts({
-    currentProductId,
+
+
+async function RelatedProducts({
+
+    currentProductSlug,
+
     category,
+
 }: RelatedProductsProps) {
 
-    const relatedProducts = PRODUCTS.filter(
 
-        product =>
 
-            product.category === category &&
-            product.id !== currentProductId
+    await connectDB();
 
-    );
 
-    if (!relatedProducts.length) return null;
+
+    const relatedProducts =
+
+        await Product.find({
+
+            category,
+
+            slug: {
+                $ne: currentProductSlug
+            }
+
+        })
+
+        .limit(8)
+
+        .lean();
+
+
+
+
+
+    if(!relatedProducts.length)
+
+        return null;
+
+
+
+
+
 
     return (
 
+
         <section className={styles.relatedProducts}>
+
 
             <div className={styles.wrapper}>
 
+
                 <div className={styles.header}>
+
 
                     <h2>
 
@@ -38,24 +78,41 @@ function RelatedProducts({
 
                     </h2>
 
+
+
                     <p>
 
                         محصولاتی از همین دسته که ممکن است برای شما جذاب باشند.
 
                     </p>
 
+
                 </div>
 
+
+
+
                 <ProductCarousel
-                    products={relatedProducts}
+
+                    products={
+                        relatedProducts
+                    }
+
                 />
+
+
 
             </div>
 
+
+
         </section>
+
 
     );
 
 }
+
+
 
 export default RelatedProducts;

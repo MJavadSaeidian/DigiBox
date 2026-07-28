@@ -110,6 +110,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         slug: {
 
             type: String,
@@ -118,11 +119,14 @@ const ProductSchema = new Schema(
 
             unique: true,
 
+            index: true,
+
             lowercase: true,
 
             trim: true,
 
         },
+
 
         description: {
 
@@ -131,6 +135,7 @@ const ProductSchema = new Schema(
             required: true,
 
         },
+
 
         category: {
 
@@ -142,6 +147,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         brand: {
 
             type: String,
@@ -152,6 +158,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         images: {
 
             type: [String],
@@ -159,6 +166,7 @@ const ProductSchema = new Schema(
             required: true,
 
         },
+
 
         price: {
 
@@ -168,6 +176,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         previousPrice: {
 
             type: Number,
@@ -175,6 +184,7 @@ const ProductSchema = new Schema(
             default: null,
 
         },
+
 
         discount: {
 
@@ -184,6 +194,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         stock: {
 
             type: Number,
@@ -191,6 +202,47 @@ const ProductSchema = new Schema(
             default: 0,
 
         },
+
+
+        status: {
+
+            type: String,
+
+            enum: [
+
+                "available",
+
+                "out_of_stock",
+
+                "coming_soon",
+
+            ],
+
+            default: "available",
+
+            index: true,
+
+        },
+
+
+        featured: {
+
+            type: Boolean,
+
+            default: false,
+
+            index: true,
+
+        },
+        
+        featuredOrder: {
+
+            type: Number,
+
+            default: 0,
+
+        },
+
 
         rating: {
 
@@ -200,6 +252,7 @@ const ProductSchema = new Schema(
 
         },
 
+
         reviewCount: {
 
             type: Number,
@@ -208,11 +261,13 @@ const ProductSchema = new Schema(
 
         },
 
+
         specifications: [
 
             ProductSpecificationSchema,
 
         ],
+
 
         reviews: [
 
@@ -221,6 +276,7 @@ const ProductSchema = new Schema(
         ],
 
     },
+
 
     {
 
@@ -235,5 +291,6 @@ const Product =
     models.Product ||
 
     model("Product", ProductSchema);
+
 
 export default Product;

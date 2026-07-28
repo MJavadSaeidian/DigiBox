@@ -1,0 +1,174 @@
+.container {
+
+    min-height:100vh;
+
+    background:#0A192F;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+
+.card {
+
+
+    width:500px;
+
+    padding:35px;
+
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+
+    border-radius:25px;
+
+
+    color:#F8FAFC;
+
+
+}
+
+
+
+.title {
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.avatarBox {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.avatar {
+
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+
+    object-fit:cover;
+
+
+    background:#03AB81;
+
+}
+
+
+
+.upload {
+
+
+    margin-top:15px;
+
+
+    color:#03AB81;
+
+    cursor:pointer;
+
+}
+
+
+
+.inputGroup {
+
+
+    margin-bottom:20px;
+
+
+    label {
+
+        display:block;
+
+        margin-bottom:8px;
+
+        color:#94A3B8;
+
+    }
+
+
+    input {
+
+
+        width:100%;
+
+        padding:14px;
+
+
+        border-radius:12px;
+
+
+        border:none;
+
+
+        outline:none;
+
+
+        background:rgba(255,255,255,.1);
+
+
+        color:white;
+
+
+    }
+
+}
+
+
+
+.button {
+
+
+    width:100%;
+
+
+    padding:14px;
+
+
+    border:none;
+
+
+    border-radius:14px;
+
+
+    background:#03AB81;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    font-size:16px;
+
+}

@@ -1,32 +1,51 @@
 import { NextResponse } from "next/server";
 
-import connectDB from "@/lib/db";
+import { connectDB } from "@/lib/db";
+
 import Product from "@/models/Product";
 
-export async function GET() {
 
-    try {
+ export async function GET() {
 
-        await connectDB();
+        try {
 
-        const products = await Product.find().lean();
+            await connectDB();
 
-        return NextResponse.json(products);
 
-    } catch (error) {
+           const products =
+    await Product.find({
+        featured: true
+    })
+    .sort({
+        featuredOrder: 1
+    });
 
-        console.error("API ERROR:", error);
+            return NextResponse.json(
+                {
+                    products
+                },
+                {
+                    status: 200
+                }
+            );
 
-        return NextResponse.json(
-            {
-                error: String(error),
-            },
-            {
-                status: 500,
-            }
 
-        );
+        }
+        catch (error) {
+
+            return NextResponse.json(
+
+                {
+                    message:
+                        "خطا در دریافت محصولات"
+                },
+
+                {
+                    status: 500
+                }
+
+            );
+
+        }
 
     }
-
-}

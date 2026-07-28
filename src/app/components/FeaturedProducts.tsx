@@ -1,12 +1,22 @@
-import SectionTitle from "@/shared/components/SectionTitle";
 import styles from "./FeaturedProducts.module.scss";
+
 import ProductCard from "@/shared/components/ProductCard";
-import { PRODUCTS } from "@/shared/constants/products";
+import SectionTitle from "@/shared/components/SectionTitle";
 
+import { connectDB } from "@/lib/db";
+import Product from "@/models/Product";
 
+async function FeaturedProducts() {
 
-function FeaturedProducts() {
+    await connectDB();
+
+    const products = await Product.find()
+        .sort({ createdAt: -1 })
+        .limit(8)
+        .lean();
+
     return (
+
         <section className={styles.featured}>
 
             <SectionTitle
@@ -16,30 +26,21 @@ function FeaturedProducts() {
 
             <div className={styles.grid}>
 
-                {PRODUCTS.map((product) => (
+                {products.map((product: any) => (
+
                     <ProductCard
-                    id={product.id}
-                    key={product.id}
-                    images={product.images}
-                    title={product.title}
-                    slug={product.slug}
-                    description={product.description}
-                    stock={product.stock}
-                    rating={product.rating}
-                    reviewCount={product.reviewCount}
-                    price={product.price}
-                    previousPrice={product.previousPrice}
-                    discount={product.discount}
-                    category={product.category}
-                    brand={product.brand}
-                    specifications={product.specifications}
-                />
+                        key={product.slug}
+                        product={product}
+                    />
+
                 ))}
 
             </div>
 
         </section>
+
     );
+
 }
 
 export default FeaturedProducts;

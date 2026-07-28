@@ -1,0 +1,187 @@
+.account {
+
+    min-height:100vh;
+
+    padding:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+
+    background:
+
+    radial-gradient(
+        circle at top right,
+        rgba(3,171,129,.25),
+        transparent 35%
+    ),
+
+    #0A192F;
+
+
+}
+
+
+
+.card {
+
+
+    width:350px;
+
+    padding:40px;
+
+    text-align:center;
+
+
+    border-radius:28px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:blur(25px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    color:#F8FAFC;
+
+
+
+}
+
+
+
+.avatar {
+
+
+    width:90px;
+
+    height:90px;
+
+
+    margin:0 auto 25px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    border-radius:50%;
+
+
+    background:#03AB81;
+
+
+    font-size:35px;
+
+    font-weight:700;
+
+}
+
+
+
+.card p {
+
+    color:#94A3B8;
+
+}
+
+
+
+.menu {
+
+
+    width:300px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+
+}
+
+
+
+.menu button {
+
+
+    padding:18px;
+
+
+    border-radius:16px;
+
+
+    cursor:pointer;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:blur(20px);
+
+
+    color:#F8FAFC;
+
+
+    font-size:15px;
+
+
+    transition:.3s;
+
+
+
+    &:hover {
+
+        background:#03AB81;
+
+    }
+
+}
+
+
+
+.logout {
+
+
+    background:
+
+    rgba(239,68,68,.15) !important;
+
+
+    border-color:
+
+    rgba(239,68,68,.4) !important;
+
+
+
+    &:hover {
+
+        background:#EF4444 !important;
+
+    }
+
+}

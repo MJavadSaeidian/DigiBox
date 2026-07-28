@@ -1,3 +1,4 @@
+"use client";
 import styles from "@/shared/layout/Header/Header.module.scss"
 import Image from "next/image"
 import Link from "next/link"
@@ -7,8 +8,60 @@ import { FiShoppingCart, FiUser } from "react-icons/fi"
 import { IoIosSearch, IoMdHome } from "react-icons/io"
 import { TbCategoryFilled } from "react-icons/tb"
 import { TfiHeadphoneAlt } from "react-icons/tfi"
+import {
+    useEffect,
+    useState
+} from "react";
+import { RxAvatar } from "react-icons/rx";
 
 export default function Header() {
+
+    const [user, setUser] =
+        useState<any>(null);
+
+    async function checkUser() {
+
+        const res =
+            await fetch(
+                "/api/auth/me",
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+        const data =
+            await res.json();
+
+
+        setUser(data.user);
+
+    }
+
+    useEffect(() => {
+
+
+        checkUser();
+
+
+        window.addEventListener(
+            "authChange",
+            checkUser
+        );
+
+
+        return () => {
+
+            window.removeEventListener(
+                "authChange",
+                checkUser
+            );
+
+        };
+
+
+    }, []);
+
     return (
         <header className={styles.header}>
             <div className={styles.topHeader}>
@@ -22,18 +75,107 @@ export default function Header() {
                         />
                     </Link>
                     <div className={styles.searchBox}>
-                        <IoIosSearch  className={styles.searchIcon} />
+                        <IoIosSearch className={styles.searchIcon} />
                         <input type="text" placeholder="جست و جو" />
                     </div>
                 </div>
                 <div className={styles.leftSection}>
-                    <Link href="/login" className={styles.loginButton}>
-                        <span>ورود / ثبت‌نام</span>
-                        <FiUser />
-                    </Link>
+                    {
+                        user ?
+
+                            (
+
+                                <Link
+
+                                    href={
+                                        user.role === "admin"
+                                            ?
+                                            "/admin"
+                                            :
+                                            "/account"
+                                    }
+
+
+                                    className={styles.loginButton}
+
+                                >
+
+                                    <span>
+
+                                        {
+                                            user.role === "admin"
+
+                                                ?
+
+                                                "پنل مدیریت"
+
+                                                :
+
+                                                "حساب کاربری"
+
+                                        }
+
+                                    </span>
+
+                                    <div className={styles.avatarWrapper}>
+                                        {
+                                            user.role === "admin" ?
+                                                <Image
+
+                                                    src={
+                                                        user.avatar
+
+                                                    }
+
+                                                    alt="user avatar"
+
+                                                    width={45}
+
+                                                    height={45}
+
+                                                    className={styles.userAvatar}
+
+                                                /> :
+                                                <RxAvatar/>
+                                        }
+
+
+                                    </div>
+
+
+
+
+                                </Link>
+
+                            )
+
+                            :
+
+                            (
+
+                                <Link
+
+                                    href="/login"
+
+                                    className={styles.loginButton}
+
+                                >
+
+                                    <span>
+                                        ورود / ثبت‌نام
+                                    </span>
+
+
+                                    <FiUser />
+
+                                </Link>
+
+                            )
+
+                    }
 
                     <Link href="/cart" className={styles.cartButton}>
-                        <FaBoxOpen/>
+                        <FaBoxOpen />
                     </Link>
                 </div>
             </div>
@@ -42,36 +184,36 @@ export default function Header() {
                 <ul>
                     <li>
                         <Link href="/">
-                        <IoMdHome />
-                        خانه
+                            <IoMdHome />
+                            خانه
                         </Link>
                     </li>
 
                     <li>
                         <Link href="/categories">
-                        <TbCategoryFilled />
-                        دسته بندی
+                            <TbCategoryFilled />
+                            دسته بندی
                         </Link>
                     </li>
 
-                     <li>
+                    <li>
                         <Link href="/specialBox">
-                        <BsBox2HeartFill /> 
-                         جعبه های ویژه
+                            <BsBox2HeartFill />
+                            جعبه های ویژه
                         </Link>
                     </li>
 
                     <li>
                         <Link href="/about">
-                        <TfiHeadphoneAlt />
-                        تماس با ما
+                            <TfiHeadphoneAlt />
+                            تماس با ما
                         </Link>
                     </li>
 
                     <li>
                         <Link href="/contact">
-                        <BsPersonFillExclamation />
-                        درباره ما
+                            <BsPersonFillExclamation />
+                            درباره ما
                         </Link>
                     </li>
                 </ul>

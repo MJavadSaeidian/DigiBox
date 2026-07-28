@@ -1,28 +1,55 @@
 import ProductCard from "@/shared/components/ProductCard";
-import { Product } from "@/shared/types/product";
+import { useGetProductsQuery } from "@/shared/services/productApi";
 
 import styles from "./ProductGrid.module.scss";
 import Image from "next/image";
 
-type ProductGridProps = {
-    products: Product[];
-};
+function ProductGrid() {
 
-function ProductGrid({
-    products,
-}: ProductGridProps) {
+    const {
+        data: products = [],
+        isLoading,
+        error,
+    } = useGetProductsQuery();
+
+    if (isLoading) {
+
+        return (
+            <div className={styles.loading}>
+                در حال بارگذاری محصولات...
+            </div>
+        );
+
+    }
+
+    if (error) {
+
+        return (
+            <div className={styles.error}>
+                خطا در دریافت محصولات
+            </div>
+        );
+
+    }
 
     if (products.length === 0) {
-        return <div className={styles.empty}>
-            <Image
-                src="/images/no-products.png"
-                alt="no-products"
-                width={896}
-                height={597}
-                priority
-            />
-        </div>
+
+        return (
+            <div className={styles.empty}>
+
+                <Image
+                    src="/images/no-products.png"
+                    alt="no-products"
+                    width={896}
+                    height={597}
+                    priority
+                />
+
+            </div>
+        );
+
     }
+
     return (
 
         <section className={styles.grid}>
@@ -30,21 +57,8 @@ function ProductGrid({
             {products.map((product) => (
 
                 <ProductCard
-                    id={product.id}
-                    key={product.id}
-                    images={product.images}
-                    title={product.title}
-                    slug={product.slug}
-                    description={product.description}
-                    stock={product.stock}
-                    rating={product.rating}
-                    reviewCount={product.reviewCount}
-                    price={product.price}
-                    previousPrice={product.previousPrice}
-                    discount={product.discount}
-                    category={product.category}
-                    brand={product.brand}
-                    specifications={product.specifications}
+                    key={product.slug}
+                    product={product}
                 />
 
             ))}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import Header from "@/shared/layout/Header/Header";
 import Footer from "@/shared/layout/Footer/Footer";
+import StoreProvider from "@/store/provider";
+import ToastProvider from "@/shared/providers/ToastProvider";
 
 export const metadata: Metadata = {
   title: "DigiBox | فروشگاه اینترنتی دیجی باکس",
@@ -17,11 +19,14 @@ export default function RootLayout({
   return (
     <html dir="rtl" lang="fa-IR">
       <body>
-        <Header />
-        <main>
-          {children}
-        </main>
-        <Footer />
+        <StoreProvider>
+          <Header />
+          <main>
+            {children}
+            <ToastProvider />
+          </main>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

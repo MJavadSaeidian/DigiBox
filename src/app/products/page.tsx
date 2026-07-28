@@ -1,5 +1,5 @@
 "use client"
-import { PRODUCTS } from "@/shared/constants/products"
+import { useGetProductsQuery } from "@/shared/services/productApi"
 import ProductGrid from "./components/ProductGrid"
 import ProductSidebar from "./components/ProductSidebar"
 import ProductToolbar from "./components/ProductToolbar"
@@ -10,7 +10,14 @@ function ProductsPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
-  const filteredProducts = PRODUCTS.filter((product) => {
+  const {
+    data: products = [],
+    isLoading,
+    error,
+} = useGetProductsQuery();
+console.log("PRODUCTS:", products);
+console.log("ERROR:", error);
+  const filteredProducts = products.filter((product) => {
 
     const categoryMatch =
       selectedCategories.length === 0 ||

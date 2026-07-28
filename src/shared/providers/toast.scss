@@ -1,0 +1,249 @@
+
+.Toastify__toast-container {
+
+    width: 380px;
+
+    padding: 18px;
+
+    z-index: 99999;
+
+}
+
+.Toastify__toast {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,30,52,.88),
+            rgba(8,15,30,.82)
+        );
+
+    backdrop-filter: blur(28px);
+
+    -webkit-backdrop-filter: blur(28px);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+        0 20px 50px rgba(0,0,0,.35),
+
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    color: #F8FAFC;
+
+    min-height: 76px;
+
+    padding: 0;
+
+}
+
+
+.Toastify__toast::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    height:1px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.65),
+
+            transparent
+
+        );
+
+}
+
+
+
+.Toastify__toast::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    right:-70px;
+
+    top:-70px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            rgba(3,171,129,.18),
+
+            transparent 70%
+
+        );
+
+    pointer-events:none;
+
+}
+
+
+
+.Toastify__toast-body{
+
+    margin:0;
+
+    padding:18px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    line-height:1.8;
+
+}
+
+
+
+.Toastify__toast-icon{
+
+    margin-left:12px;
+
+}
+
+.Toastify__toast-icon svg{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+
+
+.Toastify__close-button{
+
+    color:#fff;
+
+    opacity:.6;
+
+    transition:.25s;
+
+}
+
+.Toastify__close-button:hover{
+
+    opacity:1;
+
+    transform:rotate(90deg);
+
+}
+
+
+
+.Toastify__progress-bar{
+
+    height:4px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #03AB81,
+
+            #00D4AA
+
+        );
+
+}
+
+
+.Toastify__toast--success{
+
+    border-right:4px solid #03AB81;
+
+}
+
+
+.Toastify__toast--error{
+
+    border-right:4px solid #EF4444;
+
+}
+
+.Toastify__toast--error::after{
+
+    background:
+
+        radial-gradient(
+
+            rgba(239,68,68,.16),
+
+            transparent 70%
+
+        );
+
+}
+
+.Toastify__toast--warning{
+
+    border-right:4px solid #F59E0B;
+
+}
+
+.Toastify__toast--warning::after{
+
+    background:
+
+        radial-gradient(
+
+            rgba(245,158,11,.18),
+
+            transparent 70%
+
+        );
+
+}
+
+
+.Toastify__toast--info{
+
+    border-right:4px solid #38BDF8;
+
+}
+
+.Toastify__toast--info::after{
+
+    background:
+
+        radial-gradient(
+
+            rgba(56,189,248,.18),
+
+            transparent 70%
+
+        );
+
+}
