@@ -6,6 +6,8 @@ import SectionTitle from "@/shared/components/SectionTitle";
 import { connectDB } from "@/lib/db";
 import Product from "@/models/Product";
 
+import Carousel from "@/shared/components/carousel/Carousel";
+
 async function FeaturedProducts() {
 
     await connectDB();
@@ -24,18 +26,25 @@ async function FeaturedProducts() {
                 subtitle="منتخب‌ترین محصولات DigiBox با بهترین قیمت"
             />
 
-            <div className={styles.grid}>
+            <Carousel>
 
-                {products.map((product: any) => (
+                {
 
-                    <ProductCard
-                        key={product.slug}
-                        product={product}
-                    />
+                    products.map((product: any) => (
 
-                ))}
+                        <ProductCard
 
-            </div>
+                            key={product.slug}
+
+                            product={product}
+
+                        />
+
+                    ))
+
+                }
+
+            </Carousel>
 
         </section>
 

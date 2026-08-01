@@ -1,0 +1,255 @@
+.embla {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    padding: 20px 50px; // قبلاً 0 50px بود
+}
+
+.viewport {
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    margin-inline: -14px;
+}
+
+.slide {
+    flex: 0 0 25%;
+    min-width: 0;
+    padding-inline: 14px;
+}
+
+/* ===========================
+          Arrows
+=========================== */
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    color: var(--color-surface);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 30;
+
+    transition: all .3s ease;
+}
+
+.prev {
+    right: 0;
+}
+
+.next {
+    left: 0;
+}
+
+.prev:hover,
+.next:hover {
+
+    background: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+    box-shadow:
+        0 10px 30px rgba(3,171,129,.35);
+
+}
+
+.prev:disabled,
+.next:disabled {
+
+    opacity: .35;
+
+    cursor: not-allowed;
+
+    transform: translateY(-50%);
+
+    box-shadow: none;
+
+}
+
+/* ===========================
+            Fade
+=========================== */
+
+.embla::before,
+.embla::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 90px;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 15;
+
+}
+
+.embla::before {
+
+    right: 0;
+
+    background: linear-gradient(
+        to left,
+        var(--color-primary),
+        transparent
+    );
+
+}
+
+.embla::after {
+
+    left: 0;
+
+    background: linear-gradient(
+        to right,
+        var(--color-primary),
+        transparent
+    );
+
+}
+
+/* ===========================
+            Dots
+=========================== */
+
+.dots {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 40px;
+
+}
+
+.dot {
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    cursor: pointer;
+
+    background: rgba(255,255,255,.25);
+
+    transition: all .3s ease;
+
+}
+
+.dot:hover {
+
+    background: white;
+
+    transform: scale(1.2);
+
+}
+
+.active {
+
+    width: 32px;
+
+    border-radius: 999px;
+
+    background: var(--color-accent);
+
+}
+
+/* ===========================
+        Responsive
+=========================== */
+
+@media (max-width:1200px) {
+
+    .slide {
+
+        flex: 0 0 33.333%;
+
+    }
+
+}
+
+@media (max-width:900px) {
+
+    .slide {
+
+        flex: 0 0 50%;
+
+    }
+
+}
+
+@media (max-width:600px) {
+
+    .embla {
+
+        padding: 0 18px;
+
+    }
+
+    .slide {
+
+        flex: 0 0 100%;
+
+    }
+
+    .prev,
+    .next {
+
+        display: none;
+
+    }
+
+    .embla::before,
+    .embla::after {
+
+        display: none;
+
+    }
+
+    .dots {
+
+        margin-top: 24px;
+
+    }
+
+}

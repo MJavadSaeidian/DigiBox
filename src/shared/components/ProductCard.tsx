@@ -138,15 +138,15 @@ function ProductCard({
 
                 <div className={styles.content}>
 
+                    <span className={styles.brand}>
+                        {brand}
+                    </span>
+
                     <h3>
 
                         {title}
 
                     </h3>
-
-                    <span>
-                        {brand}
-                    </span>
 
                     <div className={styles.priceBox}>
 
