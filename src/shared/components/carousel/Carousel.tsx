@@ -1,45 +1,35 @@
 "use client";
 
-import {
-    Children,
-    ReactNode,
-    useCallback,
-} from "react";
-
+import { Children, ReactNode, useCallback, useEffect, useRef, useState, } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-
-import Autoplay from "embla-carousel-autoplay";
-import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
-
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import styles from "./Carousel.module.scss";
+import Autoplay from "embla-carousel-autoplay";
+
 
 type Props = {
     children: ReactNode;
-
-    autoplay?: boolean;
-    loop?: boolean;
-    showArrows?: boolean;
 };
 
+
 export default function Carousel({
-
-    children,
-
-    autoplay = true,
-
-    loop = true,
-
-    showArrows = true,
-
+    children
 }: Props) {
 
-    const autoplayPlugin = Autoplay({
+    const autoplay = useRef(
 
-        delay: 3500,
+        Autoplay({
 
-        stopOnMouseEnter: true,
+            delay: 3500,
 
-    });
+            stopOnMouseEnter: false,
+
+            stopOnInteraction: true,
+
+        })
+
+    ).current;
+
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
 
@@ -47,21 +37,61 @@ export default function Carousel({
 
             align: "start",
 
-            loop,
+            loop: true,
 
-            dragFree: false,
+            direction: "rtl",
+
+            skipSnaps: false,
 
         },
 
         [
-
-            WheelGesturesPlugin(),
-
-            ...(autoplay ? [autoplayPlugin] : []),
-
+            autoplay
         ]
 
     );
+
+    const [canPrev, setCanPrev] = useState(false);
+    const [canNext, setCanNext] = useState(false);
+
+    useEffect(() => {
+
+        if (!emblaApi) return;
+
+
+        const update = () => {
+
+            setCanPrev(
+                emblaApi.canScrollPrev()
+            );
+
+            setCanNext(
+                emblaApi.canScrollNext()
+            );
+
+        };
+
+
+        update();
+
+
+        emblaApi.on("select", update);
+
+        emblaApi.on("reInit", update);
+
+
+        return () => {
+
+            emblaApi.off("select", update);
+
+            emblaApi.off("reInit", update);
+
+        };
+
+
+    }, [emblaApi]);
+
+
 
     const scrollPrev = useCallback(() => {
 
@@ -69,33 +99,31 @@ export default function Carousel({
 
     }, [emblaApi]);
 
+
+
     const scrollNext = useCallback(() => {
 
         emblaApi?.scrollNext();
 
     }, [emblaApi]);
 
+
+
     return (
 
-        <section className={styles.embla}>
+        <div className={styles.carousel}>
 
-            {
 
-                showArrows &&
+            <button
+                className={`${styles.arrow} ${styles.right}`}
+                onClick={scrollPrev}
+                disabled={!canPrev}
+            >
+                <HiChevronRight />
 
-                <button
+            </button>
 
-                    className={styles.prev}
 
-                    onClick={scrollPrev}
-
-                >
-
-                    ❯
-
-                </button>
-
-            }
 
             <div
 
@@ -107,49 +135,45 @@ export default function Carousel({
 
                 <div className={styles.container}>
 
+
                     {
+                        Children.map(
+                            children,
+                            (child) => (
 
-                        Children.toArray(children).map((child, index) => (
+                                <div
+                                    className={styles.slide}
+                                >
 
-                            <div
+                                    {child}
 
-                                key={index}
+                                </div>
 
-                                className={styles.slide}
-
-                            >
-
-                                {child}
-
-                            </div>
-
-                        ))
-
+                            )
+                        )
                     }
+
 
                 </div>
 
+
             </div>
 
-            {
 
-                showArrows &&
 
-                <button
+            <button
+                className={`${styles.arrow} ${styles.left}`}
+                onClick={scrollNext}
+                disabled={!canNext}
+            >
 
-                    className={styles.next}
+                <HiChevronLeft />
 
-                    onClick={scrollNext}
+            </button>
 
-                >
 
-                    ❮
 
-                </button>
-
-            }
-
-        </section>
+        </div>
 
     );
 

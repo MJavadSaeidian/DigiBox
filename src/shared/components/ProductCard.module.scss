@@ -76,7 +76,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 36px;
+    padding: 24px;
 
     overflow: hidden;
 
@@ -107,7 +107,7 @@
 
     z-index: 2;
 
-    width: 90%;
+    width: 82%;
     height: auto;
     border-radius: 20px;
 
@@ -198,7 +198,7 @@
 
     width: 100%;
     margin-top: auto;
-
+    border-radius: 10px;
     opacity: 0;
 
     transform: translateY(20px);
@@ -218,6 +218,6 @@
 .brand {
     color: var(--color-accent);
 
-    
+
     font-size: 14px;
 }
