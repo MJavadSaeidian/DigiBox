@@ -257,7 +257,7 @@
 .navigation {
     height: 50px;
     display: flex;
-    justify-content: center; // اضافه شود
+    justify-content: center; 
     align-items: center;
     padding: 0 40px;
     background-color: #08111A;
@@ -354,5 +354,15 @@
     height: 32px;
 
     color: #94A3B8;
+
+}
+
+.categoryWrapper {
+    position: relative;
+}
+
+.rotate {
+
+    transform:rotate(180deg);
 
 }

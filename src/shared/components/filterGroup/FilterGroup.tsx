@@ -9,27 +9,41 @@ type FilterGroupProps = {
     onChange: (selected: string[]) => void;
 };
 
+
 function FilterGroup({
     items,
     selected,
     onChange,
 }: FilterGroupProps) {
 
-    function handleToggle(item: string, checked: boolean) {
+
+    function handleToggle(
+        item: string,
+        checked: boolean
+    ) {
+
 
         if (checked) {
 
-            onChange([...selected, item]);
+            onChange([
+                ...selected,
+                item
+            ]);
+
 
         } else {
 
             onChange(
-                selected.filter((value) => value !== item)
+                selected.filter(
+                    (value) => value !== item
+                )
             );
 
         }
 
     }
+
+
 
     return (
 
@@ -43,10 +57,15 @@ function FilterGroup({
 
                     label={item}
 
-                    checked={selected.includes(item)}
+                    checked={
+                        selected.includes(item)
+                    }
 
                     onChange={(checked) =>
-                        handleToggle(item, checked)
+                        handleToggle(
+                            item,
+                            checked
+                        )
                     }
 
                 />
@@ -58,5 +77,6 @@ function FilterGroup({
     );
 
 }
+
 
 export default FilterGroup;

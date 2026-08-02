@@ -37,8 +37,8 @@ const brands = [
     },
 ];
 function PopularBrands() {
-  return (
-     <section className={styles.brands}>
+    return (
+        <section className={styles.brands}>
 
             <SectionTitle
                 title="برندهای محبوب"
@@ -50,7 +50,13 @@ function PopularBrands() {
                 {brands.map((brand) => (
 
                     <Link
-                        href={`/brand/${brand.name.toLowerCase()}`}
+                        href={{
+                            pathname: "/products",
+                            query: {
+                                brands: brand.name,
+                            },
+                        }}
+
                         key={brand.name}
                         className={styles.card}
                     >
@@ -69,7 +75,7 @@ function PopularBrands() {
             </div>
 
         </section>
-  )
+    )
 }
 
 export default PopularBrands

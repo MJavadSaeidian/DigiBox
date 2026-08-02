@@ -3,7 +3,7 @@
 import styles from "./ProductSidebar.module.scss";
 import FilterAccordion from "./FilterAccordion";
 import FilterGroup from "@/shared/components/filterGroup";
-import { BRANDS, CATEGORIES, STORAGE } from "@/shared/constants/productFilters";
+import { BRANDS, CATEGORIES, } from "@/shared/constants/productFilters";
 
 
 function ProductSidebar({
@@ -53,16 +53,6 @@ function ProductSidebar({
                 />
 
             </FilterAccordion>
-
-            {/* <FilterAccordion title="حافظه">
-
-                <FilterGroup
-                    items={STORAGE}
-                    selected={storage}
-                    onChange={setStorage}
-                />
-
-            </FilterAccordion> */}
 
         </aside>
 

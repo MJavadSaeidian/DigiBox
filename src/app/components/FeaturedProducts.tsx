@@ -22,7 +22,7 @@ async function FeaturedProducts() {
         <section className={styles.featured}>
 
             <SectionTitle
-                title="محصولات ویژه"
+                title="منتخب های DigiBox"
                 subtitle="منتخب‌ترین محصولات DigiBox با بهترین قیمت"
             />
 

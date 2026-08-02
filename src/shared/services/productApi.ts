@@ -6,6 +6,16 @@ import {
 import { Product } from "../types/product";
 
 
+type ProductFilters = {
+
+    categories?: string[];
+
+    brands?: string[];
+
+};
+
+
+
 export const productApi = createApi({
 
     reducerPath: "productApi",
@@ -23,29 +33,73 @@ export const productApi = createApi({
 
 
 
-        getProducts: builder.query<Product[], void>({
+       getProducts: builder.query<Product[], ProductFilters>({
+
+    query: ({
+        categories = [],
+        brands = []
+
+    } = {}) => {
 
 
-            query: () => "/products",
+        const params = new URLSearchParams();
+ 
+
+
+        if (categories.length) {
+
+            params.append(
+                "categories",
+                categories.join(",")
+            );
+
+        }
 
 
 
-            transformResponse: (
+        if (brands.length) {
 
-                response: {
-                    products: Product[];
-                }
+            params.append(
+                "brands",
+                brands.join(",")
+            );
 
-            ) => {
-
-
-                return response.products;
+        }
 
 
-            },
+
+        const queryString = params.toString();
 
 
-        }),
+
+        return {
+
+            url: queryString
+                ?
+                `/products?${queryString}`
+                :
+                "/products"
+
+        };
+
+
+    },
+
+
+    transformResponse: (
+
+        response: {
+            products: Product[];
+        }
+
+    ) => {
+
+        return response.products;
+
+    },
+
+
+}),
 
 
 
@@ -78,11 +132,11 @@ export const productApi = createApi({
 
 
 
-
     }),
 
 
 });
+
 
 
 

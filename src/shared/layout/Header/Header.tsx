@@ -5,14 +5,16 @@ import Link from "next/link"
 import { BsBox2HeartFill, BsPersonFillExclamation } from "react-icons/bs"
 import { FaBoxOpen } from "react-icons/fa6"
 import { FiShoppingCart, FiUser } from "react-icons/fi"
-import { IoIosSearch, IoMdHome } from "react-icons/io"
-import { TbCategoryFilled } from "react-icons/tb"
+import { IoIosArrowDown, IoIosSearch, IoMdHome } from "react-icons/io"
+import { TbCategoryFilled, TbShoppingCartQuestion } from "react-icons/tb"
 import { TfiHeadphoneAlt } from "react-icons/tfi"
 import {
     useEffect,
+    useRef,
     useState
 } from "react";
 import { RxAvatar } from "react-icons/rx";
+import MegaMenu from "@/shared/components/mega-menu/MegaMenu";
 
 export default function Header() {
 
@@ -61,6 +63,31 @@ export default function Header() {
 
 
     }, []);
+
+    const [showMegaMenu, setShowMegaMenu] = useState(false);
+
+    const menuTimeout = useRef<NodeJS.Timeout | null>(null);
+
+    const openMenu = () => {
+
+        if (menuTimeout.current) {
+            clearTimeout(menuTimeout.current);
+        }
+
+        setShowMegaMenu(true);
+    };
+
+
+
+    const closeMenu = () => {
+
+        menuTimeout.current = setTimeout(() => {
+
+            setShowMegaMenu(false);
+
+        }, 200);
+
+    };
 
     return (
         <header className={styles.header}>
@@ -136,7 +163,7 @@ export default function Header() {
                                                     className={styles.userAvatar}
 
                                                 /> :
-                                                <RxAvatar/>
+                                                <RxAvatar />
                                         }
 
 
@@ -189,11 +216,29 @@ export default function Header() {
                         </Link>
                     </li>
 
-                    <li>
-                        <Link href="/categories">
-                            <TbCategoryFilled />
+                    <li
+                        className={styles.categoryWrapper}
+                        onMouseEnter={openMenu}
+                        onMouseLeave={closeMenu}
+                    >
+                        <Link href="/products">
+                            <IoIosArrowDown 
+                            className={
+                                showMegaMenu
+                                    ?
+                                    styles.rotate
+                                    :
+                                    ""
+                            } />
                             دسته بندی
                         </Link>
+
+
+                        {
+                            showMegaMenu &&
+                            <MegaMenu />
+                        }
+
                     </li>
 
                     <li>
@@ -212,8 +257,8 @@ export default function Header() {
 
                     <li>
                         <Link href="/contact">
-                            <BsPersonFillExclamation />
-                            درباره ما
+                            <TbShoppingCartQuestion />
+                             پیگیری سفارش
                         </Link>
                     </li>
                 </ul>

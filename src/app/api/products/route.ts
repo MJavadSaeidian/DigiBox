@@ -1,51 +1,120 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { connectDB } from "@/lib/db";
-
 import Product from "@/models/Product";
 
 
- export async function GET() {
+export async function GET(request: NextRequest) {
 
-        try {
+    try {
 
-            await connectDB();
-
-
-           const products =
-    await Product.find({
-        featured: true
-    })
-    .sort({
-        featuredOrder: 1
-    });
-
-            return NextResponse.json(
-                {
-                    products
-                },
-                {
-                    status: 200
-                }
-            );
+        await connectDB();
 
 
-        }
-        catch (error) {
+        const { searchParams } = new URL(request.url);
 
-            return NextResponse.json(
+        const categories =
+            searchParams.get("categories");
 
-                {
-                    message:
-                        "خطا در دریافت محصولات"
-                },
+        const brands =
+            searchParams.get("brands");
 
-                {
-                    status: 500
-                }
+        const search =
+            searchParams.get("search");
 
-            );
+
+
+        const filter: any = {};
+
+
+
+        if (categories) {
+
+            filter.category = {
+
+                $in: categories.split(",")
+
+            };
 
         }
+
+
+
+        if (brands) {
+
+            filter.brand = {
+
+                $in: brands.split(",")
+
+            };
+
+        }
+
+
+
+        if (search) {
+
+            filter.title = {
+
+                $regex: search,
+
+                $options: "i",
+
+            };
+
+        }
+
+
+
+
+        const products = await Product.find(filter)
+            .sort({
+
+                createdAt: -1
+
+            });
+
+
+
+
+        return NextResponse.json({
+
+            success: true,
+
+            count: products.length,
+
+            products,
+
+        });
+
+
+
+    } catch (error) {
+
+
+        console.error(error);
+
+
+
+        return NextResponse.json(
+
+            {
+
+                success: false,
+
+                message: "Failed to fetch products"
+
+            },
+
+            {
+
+                status: 500
+
+            }
+
+        );
+
 
     }
+
+}
