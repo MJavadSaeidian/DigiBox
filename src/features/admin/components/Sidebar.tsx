@@ -8,6 +8,7 @@ import {
 } from "react-icons/lu";
 
 import styles from "./Sidebar.module.scss";
+import { BsBox2Heart } from "react-icons/bs";
 
 
 const menuItems = [
@@ -22,6 +23,11 @@ const menuItems = [
         title: "محصولات",
         href: "/admin/products",
         icon: <LuPackage />,
+    },
+     {
+        title: "جعبه های ویژه",
+        href: "/admin/specialBox",
+        icon: <BsBox2Heart />,
     },
 
     {

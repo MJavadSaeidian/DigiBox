@@ -6,29 +6,30 @@ import Link from "next/link";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { BsCheckCircleFill, BsXCircleFill } from "react-icons/bs";
 
+import { useGetSpecialBoxesQuery } from "@/shared/services/specialBoxApi";
 
-import styles from "./ProductTable.module.scss";
-import { useGetProductsQuery } from "@/shared/services/productApi";
+import styles from "./SpecialBoxTable.module.scss";
 
-export default function ProductTable() {
+export default function SpecialBoxTable() {
 
     const {
 
-        data: products = [],
+        data: boxes = [],
 
         isLoading,
 
-    } = useGetProductsQuery();
+    } = useGetSpecialBoxesQuery();
 
 
     if (isLoading) {
 
-        return <p>در حال دریافت محصولات...</p>;
+        return <p>در حال دریافت جعبه‌های ویژه...</p>;
 
     }
 
 
     return (
+
         <>
 
             <div className={styles.header}>
@@ -36,23 +37,24 @@ export default function ProductTable() {
                 <div>
 
                     <h1 className={styles.title}>
-                        مدیریت محصولات
+                        مدیریت جعبه‌های ویژه
                     </h1>
 
                     <p className={styles.count}>
-                        {products.length} محصول
+                        {boxes.length} جعبه
                     </p>
 
                 </div>
 
                 <Link
-                    href="/admin/products/add"
+                    href="/admin/special-boxes/add"
                     className={styles.addButton}
                 >
-                    + افزودن محصول
+                    + افزودن جعبه
                 </Link>
 
             </div>
+
             <div className={styles.tableWrapper}>
 
                 <table className={styles.table}>
@@ -63,15 +65,13 @@ export default function ProductTable() {
 
                             <th>تصویر</th>
 
-                            <th>نام محصول</th>
+                            <th>نام جعبه</th>
 
-                            <th>برند</th>
+                            <th>تعداد محصولات</th>
 
-                            <th>قیمت</th>
+                            <th>قیمت جعبه</th>
 
-                            <th>موجودی</th>
-
-                            <th>ویژه</th>
+                            <th>وضعیت</th>
 
                             <th>عملیات</th>
 
@@ -83,47 +83,36 @@ export default function ProductTable() {
 
                         {
 
-                            products.map((product) => (
+                            boxes.map((box) => (
 
-                                <tr key={product._id}>
+                                <tr key={box._id}>
 
                                     <td>
 
                                         <Image
-
-                                            src={product.images[0]}
-
-                                            alt={product.title}
-
+                                            src={box.image}
+                                            alt={box.title}
                                             width={60}
-
                                             height={60}
-
                                         />
 
                                     </td>
 
                                     <td>
 
-                                        {product.title}
+                                        {box.title}
 
                                     </td>
 
                                     <td>
 
-                                        {product.brand}
+                                        {box.products.length}
 
                                     </td>
 
                                     <td>
 
-                                        {Number(product.price).toLocaleString()}
-
-                                    </td>
-
-                                    <td>
-
-                                        {product.stock}
+                                        {Number(box.boxPrice).toLocaleString()}
 
                                     </td>
 
@@ -131,7 +120,7 @@ export default function ProductTable() {
 
                                         {
 
-                                            product.featured
+                                            box.active
 
                                                 ?
 
@@ -150,11 +139,8 @@ export default function ProductTable() {
                                         <div className={styles.actions}>
 
                                             <Link
-
-                                                href={`/admin/products/edit/${product._id}`}
-
+                                                href={`/admin/special-boxes/edit/${box._id}`}
                                                 className={styles.edit}
-
                                             >
 
                                                 <FiEdit2 />
@@ -162,9 +148,7 @@ export default function ProductTable() {
                                             </Link>
 
                                             <button
-
                                                 className={styles.delete}
-
                                             >
 
                                                 <FiTrash2 />
@@ -186,7 +170,9 @@ export default function ProductTable() {
                 </table>
 
             </div>
+
         </>
+
     );
 
 }

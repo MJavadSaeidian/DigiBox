@@ -25,9 +25,7 @@ export default function SpecialBoxCard({ box }: Props) {
 
         <article className={styles.card}>
 
-
             <section className={styles.imageSection}>
-
 
                 <span className={styles.badge}>
                     ⭐ پیشنهاد ویژه
@@ -132,25 +130,14 @@ export default function SpecialBoxCard({ box }: Props) {
                         <strong>
                             {saving.toLocaleString()}
                         </strong>
+
                     </div>
-
-
                 </div>
-
-
-
-
                 <button className={styles.button}>
                     خرید جعبه
                 </button>
 
-
-
             </section>
-
-
-
         </article>
-
     );
 }

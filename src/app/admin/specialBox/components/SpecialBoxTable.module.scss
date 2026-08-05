@@ -1,0 +1,244 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.title {
+  margin: 0;
+
+  color: #F8FAFC;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+.count {
+  margin-top: 8px;
+
+  color: #94A3B8;
+
+  font-size: 15px;
+}
+
+/* -------------------------------- */
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  color: #fff;
+
+  font-weight: 700;
+
+  background: linear-gradient(
+    135deg,
+    #03AB81,
+    #029C75
+  );
+
+  box-shadow: 0 12px 28px rgba(3, 171, 129, .25);
+
+  transition: .3s;
+}
+
+.addButton:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 18px 36px rgba(3,171,129,.4);
+
+}
+
+/* -------------------------------- */
+
+.tableWrapper {
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  background: rgba(255,255,255,.05);
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+      0 20px 50px rgba(0,0,0,.35),
+      inset 0 1px rgba(255,255,255,.05);
+
+}
+
+/* -------------------------------- */
+
+.table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.table thead {
+
+  background: rgba(255,255,255,.05);
+}
+
+.table th {
+
+  padding: 20px;
+
+  color: #F8FAFC;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.table td {
+
+  padding: 18px;
+
+  color: #CBD5E1;
+
+  text-align: center;
+
+  border-bottom: 1px solid rgba(255,255,255,.05);
+
+  transition: .3s;
+}
+
+.table tbody tr {
+
+  transition: .3s;
+}
+
+.table tbody tr:hover {
+
+  background: rgba(3,171,129,.08);
+}
+
+.table tbody tr:last-child td {
+
+  border-bottom: none;
+}
+
+/* -------------------------------- */
+
+.table img {
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.04);
+
+  padding: 6px;
+}
+
+/* -------------------------------- */
+
+.success {
+
+  font-size: 22px;
+
+  color: #03AB81;
+}
+
+.danger {
+
+  font-size: 22px;
+
+  color: #EF4444;
+}
+
+/* -------------------------------- */
+
+.actions {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.actions a,
+.actions button {
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  background: rgba(255,255,255,.05);
+
+  color: #F8FAFC;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.edit:hover {
+
+  background: rgba(3,171,129,.15);
+
+  border-color: rgba(3,171,129,.35);
+
+  color: #03AB81;
+}
+
+.delete:hover {
+
+  background: rgba(239,68,68,.12);
+
+  border-color: rgba(239,68,68,.35);
+
+  color: #EF4444;
+}
+
+/* -------------------------------- */
+
+@media (max-width: 992px) {
+
+  .header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .tableWrapper {
+
+    overflow-x: auto;
+  }
+
+  .table {
+
+    min-width: 900px;
+  }
+
+}
