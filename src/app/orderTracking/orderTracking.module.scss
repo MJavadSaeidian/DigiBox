@@ -1,0 +1,739 @@
+.page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 80px 24px 100px;
+
+    background:
+        radial-gradient(circle at 20% 10%,
+            rgba(3, 171, 129, 0.08),
+            transparent 30%),
+        radial-gradient(circle at 80% 35%,
+            rgba(3, 171, 129, 0.05),
+            transparent 28%);
+
+    background: var(--color-primary)
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+.badge,
+.orderLabel {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 14px;
+
+    border: 1px solid rgba(3, 171, 129, 0.25);
+    border-radius: 999px;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    margin: 18px 0 14px;
+    color: var(--color-surface);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.hero p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 16px;
+    line-height: 2;
+}
+
+
+/* =========================
+   Tracking Section
+========================= */
+
+.trackingSection {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+
+    align-items: center;
+
+    gap: 40px;
+
+    max-width: 1100px;
+
+    margin: 0 auto 70px;
+}
+
+
+/* =========================
+   Tracking Card
+========================= */
+
+.trackingCard {
+    position: relative;
+
+    padding: 32px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+
+    background: rgba(248, 250, 252, 0.035);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 30px;
+}
+
+.cardIcon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(3, 171, 129, 0.25);
+    border-radius: 16px;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 22px;
+}
+
+.cardHeader span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #03ab81;
+
+    font-size: 13px;
+}
+
+.cardHeader h2 {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Form
+========================= */
+
+.trackingForm {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 14px;
+}
+
+.field {
+    flex: 1;
+}
+
+.field label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+
+    height: 52px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+
+    background: rgba(0, 0, 0, 0.12);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.inputWrapper svg {
+    flex-shrink: 0;
+
+    margin-left: 10px;
+
+    color: #64748b;
+
+    font-size: 18px;
+}
+
+.inputWrapper:focus-within {
+    border-color: rgba(3, 171, 129, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(3, 171, 129, 0.08);
+}
+
+.inputWrapper input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #f8fafc;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.inputWrapper input::placeholder {
+    color: #64748b;
+}
+
+
+.submitButton {
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #03ab81;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.submitButton:hover {
+    background: #049a75;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(3, 171, 129, 0.2);
+}
+
+.submitButton svg:last-child {
+    font-size: 17px;
+}
+
+
+/* =========================
+   Visual Orb
+========================= */
+
+.visual {
+    position: relative;
+
+    height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.visualGlow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    filter: blur(35px);
+
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.visualOrb {
+    position: relative;
+    z-index: 2;
+
+    width: 130px;
+    height: 130px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(3, 171, 129, 0.28);
+    border-radius: 50%;
+
+    background: rgba(248, 250, 252, 0.035);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 0 50px rgba(3, 171, 129, 0.12),
+        inset 0 0 30px rgba(255, 255, 255, 0.025);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.visualOrb::before {
+    content: "";
+
+    position: absolute;
+    inset: -20px;
+
+    border: 1px solid rgba(3, 171, 129, 0.1);
+    border-radius: 50%;
+}
+
+.visualOrb::after {
+    content: "";
+
+    position: absolute;
+    inset: -42px;
+
+    border: 1px dashed rgba(3, 171, 129, 0.08);
+    border-radius: 50%;
+
+    animation: rotate 18s linear infinite;
+}
+
+.visualIcon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 0 25px rgba(3, 171, 129, 0.15);
+}
+
+.visualDot {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #03ab81;
+
+    box-shadow:
+        0 0 10px rgba(3, 171, 129, 0.7);
+}
+
+.visualDot:nth-of-type(2) {
+    top: 35px;
+    right: 25%;
+}
+
+.visualDot:nth-of-type(3) {
+    bottom: 35px;
+    left: 25%;
+
+    width: 4px;
+    height: 4px;
+}
+
+.visualDot:nth-of-type(4) {
+    top: 50%;
+    right: 15%;
+
+    width: 3px;
+    height: 3px;
+}
+
+
+/* =========================
+   Order Section
+========================= */
+
+.orderSection {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 32px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+
+    background: rgba(248, 250, 252, 0.035);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================
+   Order Header
+========================= */
+
+.orderHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.orderHeader h2 {
+    margin: 10px 0 0;
+
+    font-size: 23px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(3, 171, 129, 0.2);
+    border-radius: 999px;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   Order Info
+========================= */
+
+.orderInfo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    padding: 28px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.infoItem span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.infoItem strong {
+    color: #e2e8f0;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   Timeline
+========================= */
+
+.timeline {
+    position: relative;
+
+    padding-top: 30px;
+}
+
+.timelineItem {
+    position: relative;
+
+    display: flex;
+
+    gap: 18px;
+
+    min-height: 92px;
+
+    padding-bottom: 28px;
+}
+
+.timelineItem:last-child {
+    min-height: auto;
+
+    padding-bottom: 0;
+}
+
+.timelineItem:not(:last-child)::before {
+    content: "";
+
+    position: absolute;
+
+    top: 42px;
+    right: 19px;
+
+    width: 1px;
+    height: calc(100% - 20px);
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.timelineItem.completed:not(:last-child)::before {
+    background: rgba(3, 171, 129, 0.35);
+}
+
+.timelineIcon {
+    position: relative;
+    z-index: 2;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+
+    background: #0a192f;
+
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+.timelineItem.completed .timelineIcon {
+    border-color: rgba(3, 171, 129, 0.3);
+
+    background: rgba(3, 171, 129, 0.1);
+
+    color: #03ab81;
+}
+
+.timelineItem.active .timelineIcon {
+    border-color: #03ab81;
+
+    background: rgba(3, 171, 129, 0.12);
+
+    color: #03ab81;
+
+    box-shadow:
+        0 0 0 5px rgba(3, 171, 129, 0.06),
+        0 0 20px rgba(3, 171, 129, 0.15);
+}
+
+.timelineContent {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding-top: 2px;
+}
+
+.timelineContent strong {
+    color: #e2e8f0;
+
+    font-size: 15px;
+}
+
+.timelineItem.active .timelineContent strong {
+    color: #03ab81;
+}
+
+.timelineContent span {
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.timelineContent small {
+    color: #475569;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   Animations
+========================= */
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.05);
+
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+    .trackingSection {
+        grid-template-columns: 1fr;
+    }
+
+    .visual {
+        height: 200px;
+    }
+
+    .orderInfo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 50px 16px 70px;
+    }
+
+    .trackingCard,
+    .orderSection {
+        padding: 22px;
+    }
+
+    .trackingForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .submitButton {
+        width: 100%;
+    }
+
+    .orderHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .orderInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .timelineItem {
+        gap: 12px;
+    }
+}

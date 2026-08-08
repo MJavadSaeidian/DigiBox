@@ -38,7 +38,7 @@ function Footer() {
                     <Link href="/">خانه</Link>
                     <Link href="/products">محصولات</Link>
                     <Link href="/special-box">جعبه‌های ویژه</Link>
-                    <Link href="/contact">تماس با ما</Link>
+                    <Link href="/contactUs">تماس با ما</Link>
 
                 </div>
 
@@ -46,10 +46,10 @@ function Footer() {
 
                     <h3>خدمات مشتریان</h3>
 
-                    <Link href="/">پیگیری سفارش</Link>
-                    <Link href="/">سوالات متداول</Link>
-                    <Link href="/">قوانین و مقررات</Link>
-                    <Link href="/">حریم خصوصی</Link>
+                    <Link href="/orderTracking">پیگیری سفارش</Link>
+                    <Link href="/FAQ">سوالات متداول</Link>
+                    <Link href="/termsAndConditions">قوانین و مقررات</Link>
+                    <Link href="/privacyPolicy">حریم خصوصی</Link>
 
                 </div>
 
@@ -67,7 +67,7 @@ function Footer() {
                             <FaTelegramPlane />
                         </Link>
 
-                        <Link href="#">
+                        <Link href="https://github.com/MJavadSaeidian">
                             <FaGithub />
                         </Link>
 

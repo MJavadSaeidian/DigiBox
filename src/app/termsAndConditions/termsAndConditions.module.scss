@@ -1,0 +1,471 @@
+.page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 80px 24px 100px;
+
+    background: #07111f;
+
+    color: #f8fafc;
+
+    direction: rtl;
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    max-width: 850px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 15px;
+
+    border: 1px solid rgba(3, 171, 129, 0.25);
+    border-radius: 999px;
+
+    background: rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    margin: 18px 0 14px;
+
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+    line-height: 2;
+}
+
+.updated {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 20px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.updated svg {
+    color: #03ab81;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   Quick Navigation
+========================= */
+
+.quickNav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 10px;
+
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto 45px;
+}
+
+.quickNav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 52px;
+
+    padding: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.quickNav a svg {
+    color: #64748b;
+
+    font-size: 17px;
+
+    transition: color 0.25s ease;
+}
+
+.quickNav a:hover {
+    border-color: rgba(3, 171, 129, 0.25);
+
+    background: rgba(3, 171, 129, 0.06);
+
+    color: #e2e8f0;
+
+    transform: translateY(-2px);
+}
+
+.quickNav a:hover svg {
+    color: #03ab81;
+}
+
+
+/* =========================
+   Content
+========================= */
+
+.content {
+    width: 100%;
+    max-width: 950px;
+
+    margin: 0 auto;
+}
+
+.section {
+    scroll-margin-top: 30px;
+
+    margin-bottom: 14px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.section:hover {
+    border-color: rgba(255, 255, 255, 0.11);
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+
+/* =========================
+   Section Header
+========================= */
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding-bottom: 22px;
+
+    margin-bottom: 22px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sectionIcon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(3, 171, 129, 0.22);
+    border-radius: 14px;
+
+    background: rgba(3, 171, 129, 0.07);
+
+    color: #03ab81;
+
+    font-size: 20px;
+}
+
+.sectionHeader span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #03ab81;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sectionHeader h2 {
+    margin: 0;
+
+    color: #e2e8f0;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Text
+========================= */
+
+.text {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 2.2;
+}
+
+.text p {
+    margin: 0 0 15px;
+}
+
+.text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   Lists
+========================= */
+
+.text ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin: 20px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.text li {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+}
+
+.text li svg {
+    flex-shrink: 0;
+
+    margin-top: 5px;
+
+    color: #03ab81;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   Notice
+========================= */
+
+.notice {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    margin-top: 20px;
+
+    padding: 16px 18px;
+
+    border: 1px solid rgba(3, 171, 129, 0.14);
+    border-radius: 14px;
+
+    background: rgba(3, 171, 129, 0.05);
+}
+
+.notice > svg {
+    flex-shrink: 0;
+
+    margin-top: 4px;
+
+    color: #03ab81;
+
+    font-size: 18px;
+}
+
+.notice p {
+    margin: 0;
+}
+
+
+/* =========================
+   Important
+========================= */
+
+.important {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-top: 25px;
+
+    padding: 23px 25px;
+
+    border: 1px solid rgba(245, 158, 11, 0.16);
+    border-radius: 18px;
+
+    background: rgba(245, 158, 11, 0.045);
+}
+
+.importantIcon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 12px;
+
+    background: rgba(245, 158, 11, 0.07);
+
+    color: #f59e0b;
+
+    font-size: 19px;
+}
+
+.important h3 {
+    margin: 2px 0 7px;
+
+    color: #e2e8f0;
+
+    font-size: 15px;
+}
+
+.important p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+
+    .quickNav {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 55px 16px 70px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .quickNav {
+        grid-template-columns: repeat(2, 1fr);
+
+        margin-bottom: 30px;
+    }
+
+    .quickNav a {
+        justify-content: flex-start;
+
+        padding: 12px 14px;
+    }
+
+    .section {
+        padding: 22px;
+
+        border-radius: 17px;
+    }
+
+    .sectionHeader {
+        padding-bottom: 18px;
+        margin-bottom: 18px;
+    }
+
+    .sectionIcon {
+        width: 43px;
+        height: 43px;
+    }
+
+    .sectionHeader h2 {
+        font-size: 17px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .important {
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .quickNav {
+        grid-template-columns: 1fr;
+    }
+
+}

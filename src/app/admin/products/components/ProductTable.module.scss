@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
 }
 
@@ -90,6 +90,8 @@
         img {
             border-radius: 12px;
             object-fit: cover;
+            display: flex;
+            margin: auto;
         }
     }
 }

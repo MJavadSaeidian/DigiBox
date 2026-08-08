@@ -249,14 +249,14 @@ export default function Header() {
                     </li>
 
                     <li>
-                        <Link href="/about">
+                        <Link href="/contactUs">
                             <TfiHeadphoneAlt />
                             تماس با ما
                         </Link>
                     </li>
 
                     <li>
-                        <Link href="/contact">
+                        <Link href="/orderTracking">
                             <TbShoppingCartQuestion />
                              پیگیری سفارش
                         </Link>
