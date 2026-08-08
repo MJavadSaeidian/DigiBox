@@ -9,12 +9,13 @@ import RelatedProducts from "./components/RelatedProducts"
 
 import { connectDB } from "@/lib/db"
 import Product from "@/models/Product"
+import Button from "@/shared/components/Button"
 
 
 
 type ProductsDetailsPageProps = {
     params: Promise<{
-        slug:string
+        slug: string
     }>
 }
 
@@ -24,11 +25,11 @@ async function ProductsDetailsPage({
 
     params
 
-}:ProductsDetailsPageProps){
+}: ProductsDetailsPageProps) {
 
 
 
-    const {slug} =
+    const { slug } =
         await params
 
 
@@ -45,7 +46,7 @@ async function ProductsDetailsPage({
 
 
 
-    if(!product){
+    if (!product) {
 
         notFound();
 
@@ -122,21 +123,16 @@ async function ProductsDetailsPage({
 
 
 
-                    <div className={styles.stock}>
+                    <div className={
+                        product.stock > 0 ? styles.stock
+                            : `${styles.stock} ${styles.outOfStock}`
 
+                    }>
 
-                        {
-                            product.stock > 0
-
-                            ?
-
-                            "موجود در انبار"
-
-                            :
-
-                            "ناموجود"
+                        {product.stock > 0
+                            ? "موجود در انبار"
+                            : "ناموجود"
                         }
-
 
                     </div>
 
@@ -158,7 +154,7 @@ async function ProductsDetailsPage({
 
                                     {
                                         product.previousPrice
-                                        .toLocaleString()
+                                            .toLocaleString()
                                     }
 
                                     {" "}تومان
@@ -178,7 +174,7 @@ async function ProductsDetailsPage({
 
                             {
                                 product.price
-                                .toLocaleString()
+                                    .toLocaleString()
                             }
 
 
@@ -191,15 +187,9 @@ async function ProductsDetailsPage({
                     </div>
 
 
-
-
-
-
-                    <button className={styles.addToCart}>
-
+                     <Button disabled={product.stock === 0}>
                         افزودن به جعبه خرید
-
-                    </button>
+                    </Button>
 
 
 
@@ -233,9 +223,6 @@ async function ProductsDetailsPage({
 
 
             </div>
-
-
-
 
 
             <div className={styles.bottomSection}>

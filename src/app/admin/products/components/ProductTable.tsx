@@ -66,6 +66,7 @@ export default function ProductTable() {
                             <th>نام محصول</th>
 
                             <th>برند</th>
+                            <th>دسته بندی</th>
 
                             <th>قیمت</th>
 
@@ -113,6 +114,10 @@ export default function ProductTable() {
 
                                         {product.brand}
 
+                                    </td>
+
+                                    <td>
+                                        {product.category}
                                     </td>
 
                                     <td>

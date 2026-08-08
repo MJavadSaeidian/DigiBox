@@ -1,26 +1,28 @@
-import styles from "./Button.module.scss"
+import { ButtonHTMLAttributes } from "react";
+import styles from "./Button.module.scss";
 
-type ButtonProps = {
-    children: React.ReactNode
-    variant?: "primary" | "secondary"
-    type?: "button" | "submit" | "reset"
-    onClick?: () => void
-}
+type ButtonProps =
+    ButtonHTMLAttributes<HTMLButtonElement> & {
+        children: React.ReactNode;
+        variant?: "primary" | "secondary";
+    };
+
 function Button({
     children,
     variant = "primary",
     type = "button",
-    onClick,
+    className = "",
+    ...props
 }: ButtonProps) {
     return (
         <button
-        type={type}
-        onClick={onClick}
-        className={`${styles.button} ${styles[variant]}`} 
+            type={type}
+            className={`${styles.button} ${styles[variant]} ${className}`}
+            {...props}
         >
             {children}
         </button>
-    )
+    );
 }
 
-export default Button
+export default Button;

@@ -1,20 +1,17 @@
 "use client";
 
-
 import {
     useState
 } from "react";
 
-
 import {
-    useRouter
+    useRouter,
+    useSearchParams
 } from "next/navigation";
-
 
 import {
     toast
 } from "react-toastify";
-
 
 import styles from "./login.module.scss";
 
@@ -22,8 +19,9 @@ import styles from "./login.module.scss";
 
 export default function LoginPage() {
 
-
     const router = useRouter();
+
+    const searchParams = useSearchParams();
 
 
 
@@ -39,12 +37,10 @@ export default function LoginPage() {
         useState("");
 
 
-
     const [mode, setMode] =
         useState<"login" | "register">(
             "login"
         );
-
 
 
     const [loading, setLoading] =
@@ -60,9 +56,7 @@ export default function LoginPage() {
         e.preventDefault();
 
 
-
         try {
-
 
             setLoading(true);
 
@@ -70,33 +64,18 @@ export default function LoginPage() {
 
             const endpoint =
                 mode === "login"
-
-                    ?
-
-                    "/api/auth/login"
-
-                    :
-
-                    "/api/auth/register";
-
-
+                    ? "/api/auth/login"
+                    : "/api/auth/register";
 
 
 
             const body =
-
                 mode === "login"
-
-                    ?
-
-                    {
+                    ? {
                         email,
                         password
                     }
-
-                    :
-
-                    {
+                    : {
                         name,
                         email,
                         password
@@ -104,36 +83,21 @@ export default function LoginPage() {
 
 
 
-
-
-
             const res =
-
                 await fetch(
-
                     endpoint,
-
                     {
-
                         method: "POST",
 
                         headers: {
-
                             "Content-Type":
                                 "application/json"
-
                         },
-
 
                         body:
                             JSON.stringify(body)
-
                     }
-
                 );
-
-
-
 
 
 
@@ -142,24 +106,14 @@ export default function LoginPage() {
 
 
 
-
-
-
             if (!res.ok) {
-
 
                 toast.error(
                     data.message
                 );
 
-
                 return;
-
-
             }
-
-
-
 
 
 
@@ -169,28 +123,24 @@ export default function LoginPage() {
 
 
 
-
-
-
+            // -----------------------------
+            // ثبت نام
+            // -----------------------------
 
             if (mode === "register") {
 
-
                 setMode("login");
-
 
                 setPassword("");
 
                 return;
-
-
             }
 
 
 
-
-
-
+            // -----------------------------
+            // اطلاع‌رسانی به بخش‌های دیگر
+            // -----------------------------
 
             window.dispatchEvent(
                 new Event("authChange")
@@ -198,36 +148,133 @@ export default function LoginPage() {
 
 
 
+            // -----------------------------
+            // بررسی محصولی که باید
+            // بعد از Login به Cart اضافه شود
+            // -----------------------------
+
+            const addToBox =
+                searchParams.get(
+                    "addToBox"
+                );
+
+
+            const redirect =
+                searchParams.get(
+                    "redirect"
+                );
 
 
 
+            // -----------------------------
+            // اگر محصولی برای افزودن
+            // وجود داشته باشد
+            // -----------------------------
 
+            if (addToBox) {
+
+                try {
+
+                    const cartResponse =
+                        await fetch(
+                            "/api/cart",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        productId:
+                                            addToBox
+                                    })
+                            }
+                        );
+
+
+
+                    const cartData =
+                        await cartResponse.json();
+
+
+
+                    if (!cartResponse.ok) {
+
+                        toast.error(
+                            cartData.message ||
+                            "افزودن محصول به جعبه خرید انجام نشد."
+                        );
+
+                    }
+
+                    else {
+
+                        toast.success(
+                            "محصول به جعبه خرید اضافه شد."
+                        );
+
+                    }
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Add to cart error:",
+                        error
+                    );
+
+                    toast.error(
+                        "خطا در افزودن محصول به جعبه خرید."
+                    );
+
+                }
+
+            }
+
+
+
+            // -----------------------------
+            // مقصد نهایی
+            // -----------------------------
+
+            if (
+                redirect
+            ) {
+
+                router.push(
+                    redirect
+                );
+
+                return;
+            }
+
+
+
+            // -----------------------------
+            // اگر مقصدی وجود نداشت
+            // -----------------------------
 
             if (
                 data.user.role === "admin"
             ) {
 
-
                 router.push(
                     "/admin"
                 );
-
 
             }
 
             else {
 
-
                 router.push(
                     "/"
                 );
 
-
             }
-
-
-
-
 
 
 
@@ -235,59 +282,47 @@ export default function LoginPage() {
 
         catch (error) {
 
+            console.error(
+                "Login error:",
+                error
+            );
 
             toast.error(
                 "خطایی رخ داد"
             );
 
-
         }
-
 
         finally {
 
-
             setLoading(false);
 
-
         }
-
 
     }
 
 
 
 
-
-
-
     return (
 
+        <main
+            className={styles.login}
+        >
 
-        <main className={styles.login}>
-
-
-            <div className={styles.card}>
-
+            <div
+                className={styles.card}
+            >
 
                 <h1>
 
                     {
                         mode === "login"
-
-                            ?
-
-                            "ورود به DigiBox"
-
-                            :
-
-                            "ثبت نام در DigiBox"
+                            ? "ورود به DigiBox"
+                            : "ثبت نام در DigiBox"
                     }
 
-
                 </h1>
-
-
 
 
 
@@ -296,11 +331,8 @@ export default function LoginPage() {
                 >
 
 
-
-
                     {
                         mode === "register" && (
-
 
                             <input
 
@@ -310,7 +342,6 @@ export default function LoginPage() {
 
                                 value={name}
 
-
                                 onChange={
                                     (e) =>
                                         setName(
@@ -318,16 +349,10 @@ export default function LoginPage() {
                                         )
                                 }
 
-
                             />
-
 
                         )
                     }
-
-
-
-
 
 
 
@@ -337,9 +362,7 @@ export default function LoginPage() {
 
                         placeholder="ایمیل"
 
-
                         value={email}
-
 
                         onChange={
                             (e) =>
@@ -348,13 +371,7 @@ export default function LoginPage() {
                                 )
                         }
 
-
                     />
-
-
-
-
-
 
 
 
@@ -364,9 +381,7 @@ export default function LoginPage() {
 
                         placeholder="رمز عبور"
 
-
                         value={password}
-
 
                         onChange={
                             (e) =>
@@ -375,59 +390,28 @@ export default function LoginPage() {
                                 )
                         }
 
-
                     />
 
 
 
-
-
-
-
-
                     <button
-
                         disabled={loading}
-
                     >
 
-
                         {
-
                             loading
 
-                                ?
+                                ? "در حال پردازش..."
 
-                                "در حال پردازش..."
-
-                                :
-
-                                mode === "login"
-
-                                    ?
-
-                                    "ورود"
-
-                                    :
-
-                                    "ثبت نام"
-
+                                : mode === "login"
+                                    ? "ورود"
+                                    : "ثبت نام"
                         }
-
-
 
                     </button>
 
 
-
-
-
                 </form>
-
-
-
-
-
 
 
 
@@ -438,24 +422,15 @@ export default function LoginPage() {
                     className={styles.switch}
 
                     onClick={() =>
-
                         setMode(
-
                             mode === "login"
-
-                                ?
-
-                                "register"
-
-                                :
-
-                                "login"
-
+                                ? "register"
+                                : "login"
                         )
-
                     }
 
                 >
+
                     {
                         mode === "login"
 
@@ -478,10 +453,7 @@ export default function LoginPage() {
                                     وارد شوید
                                 </span>
                             </>
-
                     }
-
-
 
                 </button>
 
@@ -489,8 +461,6 @@ export default function LoginPage() {
 
         </main>
 
-
     );
-
-
 }
+

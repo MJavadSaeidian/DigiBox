@@ -1,0 +1,1608 @@
+.page {
+    min-height: 100vh;
+
+    padding:
+        55px
+        24px
+        100px;
+
+    background: var(--color-primary);
+
+    color: #f8fafc;
+}
+
+
+.container {
+    width: min(1200px, 100%);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   Header
+========================================================= */
+
+.header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+
+.title {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+}
+
+
+.subtitle {
+    margin:
+        10px
+        0
+        0;
+
+    color: #94a3b8;
+
+    font-size: 16px;
+}
+
+
+.itemCount {
+    padding:
+        9px
+        16px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.25);
+
+    border-radius: 11px;
+
+    background:
+        rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   Layout
+========================================================= */
+
+.layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        340px;
+
+    gap: 26px;
+
+    align-items: start;
+}
+
+
+.items {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   Product Card
+========================================================= */
+
+.item {
+    display: grid;
+
+    grid-template-columns:
+        140px
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap: 24px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.18),
+
+        inset
+        0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.item:hover {
+    transform: translateY(-1px);
+
+    border-color:
+        rgba(3, 171, 129, 0.25);
+
+    box-shadow:
+        0 16px 40px
+        rgba(0, 0, 0, 0.22),
+
+        inset
+        0 1px 0
+        rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   Image
+========================================================= */
+
+.image {
+    width: 140px;
+
+    height: 140px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px;
+
+    border-radius: 17px;
+
+    background: #f8fafc;
+
+    overflow: hidden;
+}
+
+
+.image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   Product Info
+========================================================= */
+
+.info {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+}
+
+
+.brand {
+    color: #03ab81;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.info h2 {
+    max-width: 100%;
+
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    font-weight: 700;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   Prices
+========================================================= */
+
+.prices {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 4px;
+}
+
+
+.previousPrice {
+    color: #64748b;
+
+    font-size: 13px;
+
+    text-decoration: line-through;
+
+    text-decoration-thickness: 1px;
+}
+
+
+.currentPrice {
+    color: #f8fafc;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   Quantity
+========================================================= */
+
+.quantity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 6px;
+}
+
+
+.quantity button {
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+.quantity button:hover {
+    border-color:
+        rgba(3, 171, 129, 0.35);
+
+    background:
+        rgba(3, 171, 129, 0.12);
+
+    color: #03ab81;
+}
+
+
+.quantity span {
+    min-width: 28px;
+
+    color: #f8fafc;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   Item Total
+========================================================= */
+
+.itemTotal {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.itemTotal strong {
+    color: #f8fafc;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+.remove {
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.remove:hover {
+    color: #ef4444;
+}
+
+
+/* =========================================================
+   Shipping
+========================================================= */
+
+.shipping {
+    margin-top: 20px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.18),
+
+        inset
+        0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+.shippingHeader {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.shippingHeader h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+.shippingHeader p {
+    margin:
+        7px
+        0
+        0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.locationButton {
+    flex-shrink: 0;
+
+    padding:
+        11px
+        16px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.25);
+
+    border-radius: 11px;
+
+    background:
+        rgba(3, 171, 129, 0.08);
+
+    color: #03ab81;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.locationButton:hover {
+    background:
+        rgba(3, 171, 129, 0.14);
+
+    border-color:
+        rgba(3, 171, 129, 0.4);
+}
+
+
+.locationButton:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+.locationMessage {
+    margin-bottom: 15px;
+
+    padding:
+        10px
+        13px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(3, 171, 129, 0.06);
+
+    color: #03ab81;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   Address Fields
+========================================================= */
+
+.addressGrid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 16px;
+}
+
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.field label {
+    color: #f8fafc;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.field input,
+.field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        12px
+        14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+
+.field input {
+    height: 46px;
+}
+
+
+.field textarea {
+    min-height: 110px;
+
+    resize: vertical;
+
+    line-height: 1.8;
+}
+
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #64748b;
+}
+
+
+.field input:focus,
+.field textarea:focus {
+    border-color:
+        rgba(3, 171, 129, 0.4);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.fullField {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   Shipping Method
+========================================================= */
+
+.shippingMethod {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding:
+        14px
+        16px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.15);
+
+    border-radius: 13px;
+
+    background:
+        rgba(3, 171, 129, 0.055);
+}
+
+
+.shippingMethod div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.shippingMethod span {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.shippingMethod strong {
+    color: #03ab81;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.shippingPrice {
+    color: #03ab81 !important;
+}
+
+
+.deliveryInfo {
+    margin:
+        -5px
+        0
+        12px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    text-align: left;
+}
+
+
+.deliveryInfo strong {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   Summary
+========================================================= */
+
+.summary {
+    position: sticky;
+
+    top: 90px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.2),
+
+        inset
+        0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+.summaryTitle {
+    margin:
+        0
+        0
+        22px;
+
+    color: #f8fafc;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+.summaryRow {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+.summaryRow strong {
+    color: #f8fafc;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.discountValue {
+    color: #03ab81 !important;
+}
+
+
+.divider {
+    height: 1px;
+
+    margin:
+        8px
+        0;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   Coupon
+========================================================= */
+
+.coupon {
+    padding:
+        8px
+        0
+        16px;
+}
+
+
+.couponTitle {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.couponBox {
+    display: flex;
+
+    gap: 9px;
+
+    width: 100%;
+}
+
+
+.couponBox input {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 44px;
+
+    padding:
+        0
+        13px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+
+.couponBox input::placeholder {
+    color: #64748b;
+}
+
+
+.couponBox input:focus {
+    border-color:
+        rgba(3, 171, 129, 0.4);
+}
+
+
+.couponBox button {
+    height: 44px;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.25);
+
+    border-radius: 10px;
+
+    background:
+        rgba(3, 171, 129, 0.1);
+
+    color: #03ab81;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   Savings
+========================================================= */
+
+.savings {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin:
+        7px
+        0
+        15px;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.14);
+
+    border-radius: 14px;
+
+    background:
+        rgba(3, 171, 129, 0.06);
+}
+
+
+.savings > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.savings span {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+.savings strong {
+    color: #03ab81;
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+
+.savingsIcon {
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(3, 171, 129, 0.12);
+
+    color: #03ab81 !important;
+
+    font-size: 15px !important;
+}
+
+
+/* =========================================================
+   Total
+========================================================= */
+
+.total {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding:
+        16px
+        0
+        19px;
+}
+
+
+.total span {
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.total strong {
+    color: #03ab81;
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   Checkout
+========================================================= */
+
+.checkout {
+    width: 100%;
+
+    padding:
+        14px
+        18px;
+
+    border:
+        1px solid
+        rgba(3, 171, 129, 0.3);
+
+    border-radius: 12px;
+
+    background: #03ab81;
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 25px
+        rgba(3, 171, 129, 0.16);
+}
+
+
+.checkout:hover {
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 13px 32px
+        rgba(3, 171, 129, 0.25);
+}
+
+
+/* =========================================================
+   Empty
+========================================================= */
+
+.empty {
+    min-height: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    text-align: center;
+
+    backdrop-filter: blur(18px);
+}
+
+
+.emptyIcon {
+    width: 72px;
+
+    height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(3, 171, 129, 0.08);
+
+    font-size: 31px;
+}
+
+
+.empty h1 {
+    margin:
+        0
+        0
+        8px;
+
+    color: #f8fafc;
+
+    font-size: 25px;
+}
+
+
+.empty p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   Loading
+========================================================= */
+
+.loading {
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #94a3b8;
+
+    font-size: 16px;
+}
+
+/* =========================================================
+   Map Modal
+========================================================= */
+
+.mapOverlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+.mapModal {
+    width: min(
+        900px,
+        100%
+    );
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111c30,
+            #0a1324
+        );
+
+    box-shadow:
+        0 30px 100px
+        rgba(0, 0, 0, 0.5);
+}
+
+
+.mapHeader {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        20px
+        22px;
+}
+
+
+.mapHeader h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+
+.mapHeader p {
+    margin:
+        6px
+        0
+        0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+.closeMap {
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.closeMap:hover {
+    background:
+        rgba(239, 68, 68, 0.15);
+
+    color: #ef4444;
+}
+
+
+.mapWrapper {
+    position: relative;
+
+    height: 500px;
+
+    overflow: hidden;
+}
+
+
+.mapWrapper > div {
+    width: 100%;
+
+    height: 100%;
+}
+
+
+.mapLoading {
+    position: absolute;
+
+    top: 20px;
+
+    right: 50%;
+
+    z-index: 1000;
+
+    transform:
+        translateX(50%);
+
+    padding:
+        10px
+        16px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(10, 25, 47, 0.92);
+
+    color: #03ab81;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.mapFooter {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        15px
+        22px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.mapFooter span {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+.mapFooter button {
+    padding:
+        9px
+        18px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+
+    .mapOverlay {
+        padding: 10px;
+    }
+
+
+    .mapModal {
+        border-radius: 19px;
+    }
+
+
+    .mapWrapper {
+        height: 65vh;
+    }
+
+
+    .mapFooter {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .mapFooter button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .summary {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .page {
+        padding:
+            35px
+            14px
+            70px;
+    }
+
+
+    .header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .title {
+        font-size: 30px;
+    }
+
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+
+    .item {
+        grid-template-columns:
+            105px
+            minmax(0, 1fr);
+
+        gap: 16px;
+
+        padding: 16px;
+
+        border-radius: 19px;
+    }
+
+
+    .image {
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    .info h2 {
+        font-size: 16px;
+    }
+
+
+    .currentPrice {
+        font-size: 15px;
+    }
+
+
+    .itemTotal {
+        grid-column: 2;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: space-between;
+    }
+
+
+    .shipping {
+        padding: 20px;
+
+        border-radius: 19px;
+    }
+
+
+    .shippingHeader {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .locationButton {
+        width: 100%;
+    }
+
+
+    .addressGrid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .fullField {
+        grid-column: auto;
+    }
+
+
+    .shippingMethod {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .summary {
+        padding: 21px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .item {
+        grid-template-columns:
+            90px
+            minmax(0, 1fr);
+
+        padding: 13px;
+    }
+
+
+    .image {
+        width: 90px;
+
+        height: 90px;
+    }
+
+
+    .info h2 {
+        font-size: 15px;
+    }
+
+
+    .quantity button {
+        width: 34px;
+
+        height: 34px;
+    }
+
+
+    .total strong {
+        font-size: 22px;
+    }
+
+}
+

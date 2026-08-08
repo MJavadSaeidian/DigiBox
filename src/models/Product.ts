@@ -149,13 +149,9 @@ const ProductSchema = new Schema(
 
 
         brand: {
-
             type: String,
-
             required: true,
-
             index: true,
-
         },
 
 

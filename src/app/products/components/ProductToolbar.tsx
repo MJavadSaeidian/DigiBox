@@ -1,26 +1,77 @@
 "use client";
-import { useState } from "react"
-import styles from "./ProductToolbar.module.scss"
-import Select from "@/shared/components/select"
 
+import {
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from "next/navigation";
+
+import styles from "./ProductToolbar.module.scss";
+import Select from "@/shared/components/select";
 
 type ProductToolbarProps = {
-    totalProducts: number
-}
+    totalProducts: number;
+};
+
+const SORT_OPTIONS = [
+    "جدید ترین",
+    "ارزان ترین",
+    "گران ترین",
+    "فقط موجود",
+];
+
+const SORT_VALUES: Record<string, string> = {
+    "جدید ترین": "newest",
+    "ارزان ترین": "price-asc",
+    "گران ترین": "price-desc",
+    "فقط موجود": "available",
+};
+
+const SORT_LABELS: Record<string, string> = {
+    newest: "جدید ترین",
+    "price-asc": "ارزان ترین",
+    "price-desc": "گران ترین",
+    available: "فقط موجود",
+};
 
 function ProductToolbar({
-    totalProducts
+    totalProducts,
 }: ProductToolbarProps) {
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
-    const [sort,setSort]=useState("جدید ترین")
+    const currentSort =
+        searchParams.get("sort") || "newest";
+
+    const handleSortChange = (label: string) => {
+        const value = SORT_VALUES[label];
+
+        if (!value) return;
+
+        const params = new URLSearchParams(
+            searchParams.toString()
+        );
+
+        params.set("sort", value);
+
+        router.push(
+            `${pathname}?${params.toString()}`,
+            {
+                scroll: false,
+            }
+        );
+    };
 
     return (
-
         <div className={styles.toolbar}>
 
             <div className={styles.info}>
                 <h1>همه محصولات</h1>
-                <span>{totalProducts} محصول</span>
+
+                <span>
+                    {totalProducts} محصول
+                </span>
             </div>
 
             <div className={styles.sort}>
@@ -28,20 +79,18 @@ function ProductToolbar({
                 <span>مرتب سازی:</span>
 
                 <Select
-                value={sort}
-                onChange={setSort}
-                options={[
-                    "جدید ترین",
-                    "پرفروش ترین",
-                    "ارزان ترین",
-                    "گران ترین"
-                ]}
+                    value={
+                        SORT_LABELS[currentSort] ||
+                        SORT_LABELS.newest
+                    }
+                    onChange={handleSortChange}
+                    options={SORT_OPTIONS}
                 />
 
             </div>
 
         </div>
-    )
+    );
 }
 
-export default ProductToolbar
+export default ProductToolbar;

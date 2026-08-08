@@ -70,18 +70,16 @@ export default function ProductForm({
                     await res.json();
 
                 setForm({
-
-                    title: product.title,
-                    slug: product.slug,
-                    brand: product.brand,
-                    category: product.category,
-                    price: product.price,
-                    previousPrice: product.previousPrice,
-                    stock: product.stock,
-                    description: product.description,
-                    featured: product.featured,
+                    title: product.title ?? "",
+                    slug: product.slug ?? "",
+                    brand: product.brand ?? "",
+                    category: product.category ?? "",
+                    price: String(product.price ?? ""),
+                    previousPrice: String(product.previousPrice ?? ""),
+                    stock: String(product.stock ?? ""),
+                    description: product.description ?? "",
+                    featured: product.featured ?? false,
                     featuredOrder: product.featuredOrder ?? 0,
-
                 });
 
                 setImages(product.images ?? []);
@@ -105,6 +103,28 @@ export default function ProductForm({
         loadProduct();
 
     }, [productId]);
+
+    const [brands, setBrands] = useState<string[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
+
+    useEffect(() => {
+        async function loadFilters() {
+            try {
+                const res = await fetch("/api/products/filters");
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || "خطا در دریافت فیلترها");
+                } setBrands(data.brands ?? []);
+                setCategories(data.categories ?? []);
+            } catch (error) {
+                console.error("خطا در دریافت فیلترها:", error);
+                toast.error("خطا در دریافت برندها و دسته‌بندی‌ها"
+
+                );
+            }
+        } loadFilters();
+    },
+        []);
 
     const discount =
 
@@ -143,7 +163,8 @@ export default function ProductForm({
     const handleChange = (
         e: React.ChangeEvent<
             HTMLInputElement |
-            HTMLTextAreaElement
+            HTMLTextAreaElement |
+            HTMLSelectElement
         >
     ) => {
 
@@ -397,18 +418,23 @@ export default function ProductForm({
                         </label>
 
                         <input
-
                             className={styles.input}
-
                             name="brand"
-
                             value={form.brand}
-
                             onChange={handleChange}
-
-                            placeholder="Apple"
-
+                            placeholder="انتخاب یا وارد کردن برند"
+                            list="brands"
+                            autoComplete="off"
                         />
+
+                        <datalist id="brands">
+                            {brands.map((brand) => (
+                                <option
+                                    key={brand}
+                                    value={brand}
+                                />
+                            ))}
+                        </datalist>
 
                     </div>
 
@@ -416,25 +442,28 @@ export default function ProductForm({
 
 
                     <div>
-
                         <label className={styles.label}>
                             دسته بندی
                         </label>
 
                         <input
-
                             className={styles.input}
-
                             name="category"
-
                             value={form.category}
-
                             onChange={handleChange}
-
-                            placeholder="موبایل"
-
+                            placeholder="انتخاب دسته بندی"
+                            list="categories"
+                            autoComplete="on"
                         />
 
+                        <datalist id="categories">
+                            {categories.map((category) => (
+                                <option
+                                    key={category}
+                                    value={category}
+                                />
+                            ))}
+                        </datalist>
                     </div>
 
 
@@ -474,13 +503,9 @@ export default function ProductForm({
                         <input
 
                             className={styles.input}
-
                             type="number"
-
                             name="previousPrice"
-
                             value={form.previousPrice}
-
                             onChange={handleChange}
 
                         />
@@ -549,7 +574,7 @@ export default function ProductForm({
                             />
 
                             <span>
-                                این محصول در صفحه اصلی نمایش داده شود
+                                این محصول در قسمت محصولات ویژه در صفحه اصلی نمایش داده شود
                             </span>
 
                         </label>

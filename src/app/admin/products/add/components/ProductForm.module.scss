@@ -154,7 +154,74 @@
 
 }
 
+.select {
+    width: 100%;
+    height: 48px;
 
+    padding: 0 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #f8fafc;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    direction: rtl;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #94a3b8 50%),
+        linear-gradient(135deg, #94a3b8 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 18px) 21px,
+        calc(100% - 13px) 21px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
+
+    padding-left: 35px;
+}
+
+.select:hover {
+    border-color: rgba(3, 171, 129, 0.3);
+
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.select:focus {
+    border-color: rgba(3, 171, 129, 0.6);
+
+    background-color: rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 0 0 3px rgba(3, 171, 129, 0.08);
+}
+
+.select option {
+    background: #0a192f;
+    color: #f8fafc;
+    font-family: inherit;
+    border-radius: 10px;
+}
 
 
 
@@ -429,7 +496,7 @@ textarea.input {
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 
     gap: 18px;
 
@@ -443,9 +510,9 @@ textarea.input {
 
     overflow: hidden;
 
-    background: rgba(255,255,255,.04);
+    background: rgba(255, 255, 255, .04);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 
 }
 

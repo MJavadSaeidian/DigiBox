@@ -1,60 +1,97 @@
-import styles from "./Categories.module.scss"
-import Link from "next/link"
-import { IoMdLaptop } from "react-icons/io"
-import { FaMobileAlt } from "react-icons/fa"
-import { FaComputer } from "react-icons/fa6"
-import { GrGamepad } from "react-icons/gr"
-import { TbDeviceWatch } from "react-icons/tb"
-import { IoHeadset } from "react-icons/io5"
-import { BsCameraFill } from "react-icons/bs"
-import { LuHardDriveDownload } from "react-icons/lu"
-import SectionTitle from "@/shared/components/SectionTitle"
+"use client";
 
-const categories = [
-    { title: "موبایل", icon: <FaMobileAlt /> },
-    { title: "لپ تاپ", icon: <IoMdLaptop /> },
-    { title: "کامپیوتر", icon: <FaComputer /> },
-    { title: "گیمینگ", icon: <GrGamepad /> },
-    { title: "ساعت هوشمند", icon: <TbDeviceWatch /> },
-    { title: "هدفون و هندزفری", icon: <IoHeadset /> },
-    { title: "دوربین", icon: <BsCameraFill /> },
-    { title: "تجهیزات ذخیره سازی", icon: <LuHardDriveDownload /> }
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-]
+import {
+    IoMdLaptop,
+} from "react-icons/io";
+import { FaMobileAlt } from "react-icons/fa";
+import { FaComputer } from "react-icons/fa6";
+import { GrGamepad } from "react-icons/gr";
+import { TbDeviceWatch } from "react-icons/tb";
+import { IoHeadset } from "react-icons/io5";
+import { BsCameraFill } from "react-icons/bs";
+import { LuHardDriveDownload } from "react-icons/lu";
+import { MdCategory } from "react-icons/md";
+
+import styles from "./Categories.module.scss";
+
+const categoryIcons: Record<string, React.ReactNode> = {
+    "موبایل": <FaMobileAlt />,
+    "لپ تاپ": <IoMdLaptop />,
+    "کامپیوتر": <FaComputer />,
+    "گیمینگ": <GrGamepad />,
+    "ساعت هوشمند": <TbDeviceWatch />,
+    "هدفون و هندزفری": <IoHeadset />,
+    "دوربین": <BsCameraFill />,
+    "تجهیزات ذخیره سازی": <LuHardDriveDownload />,
+};
 
 function Categories() {
+    const [categories, setCategories] = useState<string[]>([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch("/api/products/filters");
+
+                if (!response.ok) {
+                    throw new Error("خطا در دریافت دسته‌بندی‌ها");
+                }
+
+                const data = await response.json();
+
+                if (Array.isArray(data.categories)) {
+                    setCategories(
+                        data.categories.filter(Boolean)
+                    );
+                }
+            } catch (error) {
+                console.error(
+                    "Failed to fetch categories:",
+                    error
+                );
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
     return (
         <section className={styles.categories}>
             <div className={styles.container}>
-                <SectionTitle
-                    title="دسته بندی محصولات"
-                    subtitle="از میان دسته‌بندی های مختلف ، سریع تر پیدا کنید !"
-                />
+
+                <h2 className={styles.title}>
+                    دسته بندی محصولات
+                </h2>
+
                 <div className={styles.grid}>
                     {categories.map((category) => (
                         <Link
-                            key={category.title}
+                            key={category}
                             href={{
                                 pathname: "/products",
                                 query: {
-                                    categories: category.title,
+                                    categories: category,
                                 },
                             }}
                             className={styles.card}
                         >
                             <div className={styles.icon}>
-                                {category.icon}
+                                {categoryIcons[category] ?? (
+                                    <MdCategory />
+                                )}
                             </div>
 
-                            <h3>{category.title}</h3>
+                            <h3>{category}</h3>
                         </Link>
                     ))}
                 </div>
 
             </div>
         </section>
-
-    )
+    );
 }
 
-export default Categories
+export default Categories;

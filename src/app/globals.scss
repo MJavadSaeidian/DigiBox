@@ -30,8 +30,8 @@
   /* Background */
   --color-background: #F8FAFC;
   --color-surface: #FFFFFF;
-    /* Text */
-    --color-text: #0F172A;
+  /* Text */
+  --color-text: #0F172A;
   --color-text-secondary: #64748B;
 
   /* Status */
@@ -87,6 +87,16 @@ select {
   border: none;
   outline: none;
   background: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 img {
